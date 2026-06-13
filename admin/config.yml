@@ -1,0 +1,174 @@
+backend:
+  name: git-gateway
+  branch: main
+ 
+media_folder: "uploads"
+public_folder: "/uploads"
+ 
+collections:
+  - name: "site"
+    label: "Website Content"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "content"
+        label: "All Site Content"
+        file: "content.json"
+        fields:
+          - label: "Page Settings"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Browser Tab Title", name: "title", widget: "string" }
+              - { label: "SEO Description", name: "description", widget: "text" }
+              - { label: "SEO Keywords", name: "keywords", widget: "string", required: false }
+              - { label: "Author", name: "author", widget: "string", required: false }
+              - { label: "Domain", name: "domain", widget: "string" }
+              - { label: "Formspree Form ID (for contact form)", name: "formspreeId", widget: "string", required: false, hint: "Get one free at formspree.io. The part after /f/ in your form URL." }
+ 
+          - label: "Top Bar (Logo)"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+ 
+          - label: "Hero (Top Section)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Heading Line 1", name: "headingLine1", widget: "string" }
+              - { label: "Heading Line 2 (italic)", name: "headingLine2", widget: "string" }
+              - { label: "Intro Paragraph", name: "desc", widget: "text" }
+              - { label: "CV Download Link", name: "cvUrl", widget: "string", required: false, hint: "Paste a link to your CV PDF. Leave blank to hide." }
+              - label: "Credential Cards (right side)"
+                name: "credentials"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Big Value", name: "value", widget: "string", hint: "Use <br> for a line break" }
+                  - { label: "Subtext", name: "sub", widget: "string" }
+ 
+          - label: "Trust Strip (badges under hero)"
+            name: "trust"
+            widget: "list"
+            field: { label: "Badge Text", name: "text", widget: "string" }
+ 
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text", hint: "You can use <strong>text</strong> to make words bold." }
+              - label: "Strength Tags"
+                name: "strengths"
+                widget: "list"
+                field: { label: "Tag", name: "text", widget: "string" }
+              - label: "Quick Facts (right column)"
+                name: "facts"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "key", widget: "string" }
+                  - { label: "Value", name: "val", widget: "string", hint: "Use <br> for a line break" }
+ 
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - label: "Bullet Points"
+                name: "items"
+                widget: "list"
+                field: { label: "Point", name: "text", widget: "string" }
+ 
+          - label: "Experience"
+            name: "experience"
+            widget: "list"
+            fields:
+              - { label: "Period", name: "period", widget: "string", hint: "e.g. Dec 2024<br>Present" }
+              - { label: "Job Title", name: "title", widget: "string" }
+              - { label: "Company & Location", name: "company", widget: "string" }
+              - label: "Bullet Points"
+                name: "bullets"
+                widget: "list"
+                field: { label: "Point", name: "text", widget: "text" }
+ 
+          - label: "Education & Certifications"
+            name: "education"
+            widget: "list"
+            fields:
+              - { label: "Category Tag", name: "tag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Institution", name: "inst", widget: "string" }
+              - { label: "Year", name: "yr", widget: "string" }
+              - { label: "Status", name: "status", widget: "string" }
+              - { label: "Status Colour", name: "statusType", widget: "select", options: ["pass", "on", "pend"], default: "pass", hint: "pass = green, on = blue, pend = amber" }
+              - { label: "Second Status (optional)", name: "status2", widget: "string", required: false }
+ 
+          - label: "Skills (groups)"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Group Label", name: "label", widget: "string" }
+              - label: "Skill Tags"
+                name: "tags"
+                widget: "list"
+                field: { label: "Skill", name: "text", widget: "string" }
+ 
+          - label: "Training Hours"
+            name: "training"
+            widget: "list"
+            fields:
+              - { label: "Hours", name: "hrs", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+ 
+          - label: "Blog Posts"
+            name: "blog"
+            widget: "list"
+            fields:
+              - { label: "Category", name: "cat", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Tag (e.g. Coming Soon)", name: "tag", widget: "string" }
+              - { label: "Article URL", name: "url", widget: "string", required: false, hint: "Link to the full article. Leave blank if not ready." }
+ 
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role / Company", name: "role", widget: "string" }
+              - { label: "Avatar Letter", name: "avatar", widget: "string", hint: "A single letter shown in the circle." }
+ 
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+              - { label: "LinkedIn Display Text", name: "linkedinLabel", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Website", name: "website", widget: "string" }
+              - label: "Service Dropdown Options"
+                name: "services"
+                widget: "list"
+                field: { label: "Option", name: "text", widget: "string" }
+ 
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Blurb", name: "blurb", widget: "text" }
+              - { label: "Bottom Line", name: "bottomLine", widget: "string" }
+              - { label: "Copyright Year", name: "year", widget: "string" }

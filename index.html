@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sures Guragai — Finance &amp; Audit Professional</title>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta name="author" content=""/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+  --ink:        #0A1628;
+  --navy:       #0F2240;
+  --navy-mid:   #163660;
+  --gold:       #C19A3C;
+  --gold-lt:    #D4AE5A;
+  --gold-pale:  #F5EDD8;
+  --parchment:  #F9F7F2;
+  --white:      #FFFFFF;
+  --rule:       #E4DDD0;
+  --muted:      #8A8278;
+  --body-text:  #3A3530;
+  --heading:    #0A1628;
+
+  --r:   4px;
+  --sh1: 0 1px 4px rgba(10,22,40,.06);
+  --sh2: 0 8px 32px rgba(10,22,40,.10);
+  --sh3: 0 20px 60px rgba(10,22,40,.14);
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  color:var(--body-text);
+  background:var(--parchment);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+img{display:block;max-width:100%;}
+
+/* ============================================================
+   TYPE SCALE
+============================================================ */
+h1,h2,h3,h4{
+  font-family:'DM Serif Display',Georgia,serif;
+  color:var(--heading);
+  line-height:1.18;
+  font-weight:400;
+}
+h1{font-size:clamp(2.8rem,5.5vw,4.5rem);}
+h2{font-size:clamp(2rem,3.8vw,3rem);}
+h3{font-size:clamp(1.15rem,2vw,1.4rem);}
+h4{font-size:1.05rem;}
+p{font-size:.96rem;color:var(--muted);line-height:1.8;}
+small{font-size:.78rem;}
+
+/* ============================================================
+   LAYOUT UTILITIES
+============================================================ */
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+.wrap--narrow{max-width:780px;margin:0 auto;padding:0 32px;}
+
+.sec{padding:112px 0;}
+.sec--dark{background:var(--ink);color:var(--white);}
+.sec--dark h2,.sec--dark h3,.sec--dark h4{color:var(--white);}
+.sec--dark p{color:rgba(255,255,255,.55);}
+.sec--white{background:var(--white);}
+.sec--parchment{background:var(--parchment);}
+
+/* Section label + heading combo */
+.sec-label{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.sec-rule{
+  width:32px;height:1.5px;
+  background:var(--gold);
+  margin:18px 0 0;
+}
+.sec-rule--center{margin:18px auto 0;}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;
+  font-family:'DM Sans',sans-serif;
+  font-size:.85rem;font-weight:600;
+  letter-spacing:.04em;
+  border-radius:var(--r);
+  border:1.5px solid transparent;
+  cursor:pointer;
+  transition:all .22s var(--ease);
+  white-space:nowrap;
+}
+.btn-gold{
+  background:var(--gold);color:var(--ink);border-color:var(--gold);
+}
+.btn-gold:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 24px rgba(193,154,60,.28);}
+.btn-ghost-light{
+  background:transparent;color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.3);
+}
+.btn-ghost-light:hover{border-color:rgba(255,255,255,.7);color:var(--white);}
+.btn-ghost-dark{
+  background:transparent;color:var(--navy);border-color:var(--navy);
+}
+.btn-ghost-dark:hover{background:var(--navy);color:var(--white);}
+
+/* ============================================================
+   NAV
+============================================================ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  transition:background .3s,box-shadow .3s;
+}
+#nav.solid{
+  background:var(--ink);
+  box-shadow:0 2px 24px rgba(10,22,40,.4);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:66px;
+}
+.nav-logo{
+  display:flex;flex-direction:column;line-height:1.15;
+  flex-shrink:0;
+}
+.nav-logo .n{
+  font-family:'DM Serif Display',serif;
+  font-size:1.15rem;color:var(--white);
+}
+.nav-logo .d{font-size:.66rem;color:var(--gold);letter-spacing:.09em;}
+.nav-menu{display:flex;align-items:center;gap:32px;}
+.nav-menu a{
+  font-size:.82rem;font-weight:500;
+  color:rgba(255,255,255,.65);
+  letter-spacing:.03em;
+  transition:color .2s;
+}
+.nav-menu a:hover{color:var(--gold);}
+.nav-cta-link{
+  background:var(--gold)!important;
+  color:var(--ink)!important;
+  padding:8px 20px;border-radius:var(--r);
+  font-weight:600!important;
+}
+.nav-cta-link:hover{background:var(--gold-lt)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{width:22px;height:1.5px;background:var(--white);transition:.3s;}
+
+/* ============================================================
+   HERO  — the ledger-line split
+============================================================ */
+#hero{
+  min-height:100vh;
+  background:var(--ink);
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:0;
+  position:relative;
+  overflow:hidden;
+  padding-top:66px;
+}
+
+/* Signature texture — faint diagonal ledger lines */
+#hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(
+      -55deg,
+      rgba(255,255,255,.018) 0px,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px,
+      transparent 48px
+    );
+  pointer-events:none;
+}
+
+/* The gold diagonal ledger rule — THE signature element */
+#hero::after{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  /* sits between the two columns */
+  left:calc(100% - 380px - 1px);
+  width:2px;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    var(--gold) 18%,
+    var(--gold) 82%,
+    transparent 100%
+  );
+  opacity:.5;
+}
+
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 80px 80px 0;
+  position:relative;z-index:2;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:30px;
+}
+.hero-badge::before{
+  content:'';width:20px;height:1px;background:var(--gold);
+}
+#hero h1{color:var(--white);margin-bottom:24px;}
+#hero h1 i{font-style:italic;color:var(--gold-lt);}
+.hero-desc{
+  font-size:1.02rem;color:rgba(255,255,255,.6);
+  max-width:520px;margin-bottom:44px;line-height:1.85;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+.hero-right{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 0 80px 56px;
+  position:relative;z-index:2;
+  border-left:none;
+}
+.credential-stack{display:flex;flex-direction:column;gap:0;}
+.cred-item{
+  padding:28px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.cred-item:first-child{padding-top:0;}
+.cred-item:last-child{border-bottom:none;padding-bottom:0;}
+.cred-label{
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:6px;
+}
+.cred-value{
+  font-family:'DM Serif Display',serif;
+  font-size:1.5rem;color:var(--white);line-height:1.15;
+}
+.cred-sub{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:4px;}
+
+/* ============================================================
+   TRUST STRIP
+============================================================ */
+#trust{
+  background:var(--gold);
+  padding:0;
+}
+.trust-inner{
+  display:flex;align-items:stretch;
+  overflow:hidden;
+}
+.trust-item{
+  flex:1;
+  display:flex;align-items:center;gap:11px;
+  padding:20px 28px;
+  font-size:.78rem;font-weight:600;
+  color:var(--ink);
+  letter-spacing:.02em;
+  border-right:1px solid rgba(10,22,40,.12);
+}
+.trust-item:last-child{border-right:none;}
+.trust-item svg{flex-shrink:0;opacity:.7;}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+#about .about-cols{
+  display:grid;
+  grid-template-columns:1fr 400px;
+  gap:96px;
+  align-items:start;
+}
+.about-prose p{margin-bottom:22px;font-size:.97rem;line-height:1.9;}
+.about-prose p:last-child{margin-bottom:0;}
+
+.fact-list{display:flex;flex-direction:column;gap:0;}
+.fact-row{
+  display:flex;flex-direction:column;
+  padding:18px 0;
+  border-bottom:1px solid var(--rule);
+}
+.fact-row:last-child{border-bottom:none;}
+.fact-key{
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:5px;
+}
+.fact-val{font-size:.93rem;font-weight:500;color:var(--heading);}
+
+.strength-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;margin-top:40px;
+}
+.str-tag{
+  font-size:.8rem;font-weight:500;
+  color:var(--body-text);
+  padding:10px 14px;
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  text-align:center;
+  transition:border-color .2s,color .2s;
+}
+.str-tag:hover{border-color:var(--gold);color:var(--ink);}
+
+/* ============================================================
+   SERVICES
+============================================================ */
+#services .svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.svc-card{
+  background:var(--white);
+  padding:40px 34px;
+  transition:background .22s var(--ease);
+  position:relative;
+}
+.svc-card:hover{background:var(--parchment);}
+.svc-card:hover .svc-num{opacity:1;}
+.svc-num{
+  font-family:'DM Serif Display',serif;
+  font-size:2.8rem;color:var(--gold);
+  opacity:.2;
+  line-height:1;
+  transition:opacity .22s;
+  margin-bottom:16px;
+}
+.svc-card h3{font-size:1.1rem;margin-bottom:12px;}
+.svc-card p{font-size:.86rem;margin-bottom:18px;line-height:1.7;}
+.svc-list{padding-left:0;}
+.svc-list li{
+  font-size:.83rem;color:var(--muted);
+  padding:5px 0;
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;gap:9px;
+}
+.svc-list li:last-child{border-bottom:none;}
+.svc-list li::before{
+  content:'';
+  width:4px;height:4px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+
+/* ============================================================
+   EXPERIENCE
+============================================================ */
+#experience .exp-list{
+  max-width:860px;
+  margin:0 auto;
+  display:flex;flex-direction:column;
+  gap:0;
+}
+.exp-row{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:0;
+  border-bottom:1px solid var(--rule);
+  padding:52px 0;
+}
+.exp-row:first-child{padding-top:0;}
+.exp-row:last-child{border-bottom:none;padding-bottom:0;}
+.exp-period{
+  font-size:.75rem;font-weight:600;letter-spacing:.06em;
+  color:var(--gold);text-transform:uppercase;
+  padding-top:4px;line-height:1.5;
+}
+.exp-body{}
+.exp-title{
+  font-family:'DM Serif Display',serif;
+  font-size:1.35rem;margin-bottom:4px;
+}
+.exp-co{font-size:.87rem;color:var(--muted);margin-bottom:20px;}
+.exp-bullets{display:flex;flex-direction:column;gap:8px;}
+.exp-bullets li{
+  font-size:.88rem;color:var(--body-text);
+  display:flex;gap:14px;line-height:1.65;
+}
+.exp-bullets li::before{
+  content:'';
+  width:1px;height:auto;
+  min-height:1em;
+  background:var(--gold);
+  flex-shrink:0;
+  margin-top:.25em;
+  opacity:.5;
+}
+
+/* ============================================================
+   EDUCATION
+============================================================ */
+#education .edu-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;
+}
+.edu-card{
+  background:var(--parchment);
+  padding:32px 26px;
+  transition:background .2s;
+}
+.edu-card:hover{background:var(--white);}
+.edu-tag{
+  font-size:.66rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:12px;display:block;
+}
+.edu-card h3{font-size:1.0rem;margin-bottom:6px;line-height:1.3;}
+.edu-card .inst{font-size:.8rem;color:var(--muted);margin-bottom:4px;}
+.edu-card .yr{font-size:.78rem;color:var(--rule);font-weight:600;}
+.edu-status{
+  display:inline-block;margin-top:14px;
+  font-size:.7rem;font-weight:700;letter-spacing:.06em;
+  padding:4px 10px;border-radius:2px;text-transform:uppercase;
+}
+.s-pass{background:#E6F4EC;color:#1A6632;}
+.s-on{background:#EEF2FF;color:#2D44B0;}
+.s-pend{background:#FFF4E5;color:#935300;}
+
+/* ============================================================
+   SKILLS
+============================================================ */
+#skills .sk-cols{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:40px 60px;
+}
+.sk-group{}
+.sk-group-label{
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--rule);
+}
+.sk-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.sk-tag{
+  font-size:.8rem;font-weight:500;
+  color:var(--body-text);
+  background:var(--white);
+  border:1px solid var(--rule);
+  padding:6px 13px;border-radius:2px;
+  transition:all .2s var(--ease);
+}
+.sk-tag:hover{background:var(--gold-pale);border-color:var(--gold);color:var(--ink);}
+
+/* Training row */
+.training-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;
+  margin-top:72px;
+}
+.tr-card{
+  background:var(--ink);
+  padding:36px 28px;
+  display:flex;flex-direction:column;
+}
+.tr-hrs{
+  font-family:'DM Serif Display',serif;
+  font-size:3rem;color:var(--gold);line-height:1;margin-bottom:10px;
+}
+.tr-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65;}
+.tr-desc strong{display:block;color:rgba(255,255,255,.85);font-size:.88rem;margin-bottom:4px;}
+
+/* ============================================================
+   BLOG
+============================================================ */
+#blog .blog-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+.blog-card{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .22s var(--ease),transform .22s var(--ease);
+}
+.blog-card:hover{box-shadow:var(--sh3);transform:translateY(-4px);}
+.blog-bar{height:3px;background:var(--gold);}
+.blog-body{padding:32px 28px;flex:1;display:flex;flex-direction:column;}
+.blog-cat{
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+}
+.blog-card h3{font-size:1.05rem;margin-bottom:12px;line-height:1.45;}
+.blog-card p{font-size:.86rem;flex:1;margin-bottom:22px;}
+.blog-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.76rem;color:var(--muted);
+  border-top:1px solid var(--rule);padding-top:16px;
+}
+.blog-link{
+  font-size:.8rem;font-weight:600;color:var(--navy);
+  transition:color .2s;
+}
+.blog-link:hover{color:var(--gold);}
+.blog-note{
+  text-align:center;margin-top:28px;
+  font-size:.8rem;color:var(--muted);font-style:italic;
+}
+
+/* ============================================================
+   TESTIMONIALS
+============================================================ */
+#testimonials .testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r);overflow:hidden;
+}
+.testi-card{
+  background:rgba(255,255,255,.04);
+  padding:44px 36px;
+  transition:background .2s;
+}
+.testi-card:hover{background:rgba(255,255,255,.07);}
+.testi-mark{
+  font-family:'DM Serif Display',serif;
+  font-size:3.5rem;line-height:.8;color:var(--gold);
+  opacity:.6;margin-bottom:20px;
+}
+.testi-card p{
+  font-size:.93rem;color:rgba(255,255,255,.7);
+  line-height:1.85;margin-bottom:28px;
+}
+.testi-author{display:flex;align-items:center;gap:13px;}
+.testi-av{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(193,154,60,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-size:1.1rem;
+  color:var(--gold-lt);flex-shrink:0;
+}
+.testi-nm{font-size:.88rem;font-weight:600;color:var(--white);}
+.testi-rl{font-size:.76rem;color:rgba(255,255,255,.38);}
+.testi-note{
+  text-align:center;margin-top:28px;
+  font-size:.78rem;color:rgba(255,255,255,.25);font-style:italic;
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+#contact .contact-cols{
+  display:grid;grid-template-columns:420px 1fr;
+  gap:80px;align-items:start;
+}
+.contact-lede p{font-size:.97rem;line-height:1.9;margin-bottom:36px;}
+.cd-item{
+  display:flex;gap:16px;align-items:flex-start;
+  margin-bottom:24px;
+}
+.cd-icon{
+  width:36px;height:36px;border-radius:var(--r);
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;flex-shrink:0;
+}
+.cd-text strong{
+  display:block;font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:3px;
+}
+.cd-text span{font-size:.88rem;color:var(--body-text);}
+.cd-text a{color:var(--navy);transition:color .2s;}
+.cd-text a:hover{color:var(--gold);}
+
+.contact-form-wrap{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  padding:44px 40px;
+  box-shadow:var(--sh2);
+}
+.form-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{margin-bottom:18px;}
+.fg label{
+  display:block;font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--body-text);margin-bottom:7px;
+}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:11px 14px;
+  font-family:'DM Sans',sans-serif;font-size:.92rem;
+  color:var(--heading);
+  background:var(--parchment);
+  border:1.5px solid var(--rule);
+  border-radius:var(--r);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(193,154,60,.1);
+  background:var(--white);
+}
+.fg textarea{resize:vertical;min-height:120px;}
+.btn-submit{width:100%;padding:15px;font-size:.88rem;}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:72px 0 32px;
+}
+.foot-cols{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1.8fr;
+  gap:56px;margin-bottom:56px;
+}
+.foot-brand .nm{
+  font-family:'DM Serif Display',serif;
+  font-size:1.3rem;color:var(--white);margin-bottom:4px;
+}
+.foot-brand .dm{font-size:.68rem;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;}
+.foot-brand p{font-size:.83rem;color:rgba(255,255,255,.38);line-height:1.75;max-width:280px;}
+footer h5{
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:20px;
+}
+footer ul li{margin-bottom:10px;}
+footer ul li a{
+  font-size:.84rem;color:rgba(255,255,255,.45);
+  transition:color .2s;
+}
+footer ul li a:hover{color:var(--gold-lt);}
+.foot-contact-items .fi{
+  display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;
+}
+.foot-contact-items .fi span{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.5;}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;
+}
+.foot-bottom p{font-size:.78rem;color:rgba(255,255,255,.25);}
+.foot-bottom a{color:var(--gold);}
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+#btt{
+  position:fixed;bottom:28px;right:28px;
+  width:44px;height:44px;
+  background:var(--gold);color:var(--ink);
+  border:none;border-radius:50%;
+  font-size:1.1rem;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  box-shadow:var(--sh2);z-index:99;
+  transition:all .22s var(--ease);
+}
+#btt:hover{background:var(--gold-lt);transform:translateY(-3px);}
+#btt.show{display:flex;}
+
+/* ============================================================
+   REVEAL
+============================================================ */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+.rv-d1{transition-delay:.08s;}
+.rv-d2{transition-delay:.16s;}
+.rv-d3{transition-delay:.24s;}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:1080px){
+  #hero{grid-template-columns:1fr;gap:0;}
+  #hero::after{display:none;}
+  .hero-left{padding:80px 0 48px;}
+  .hero-right{
+    padding:48px 0 80px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .credential-stack{flex-direction:row;flex-wrap:wrap;gap:0;}
+  .cred-item{
+    flex:1;min-width:180px;
+    padding:24px;
+    border-bottom:none;
+    border-right:1px solid rgba(255,255,255,.07);
+  }
+  .cred-item:last-child{border-right:none;}
+  #about .about-cols{grid-template-columns:1fr;gap:52px;}
+  #services .svc-grid{grid-template-columns:repeat(2,1fr);}
+  #education .edu-grid{grid-template-columns:repeat(2,1fr);}
+  .training-row{grid-template-columns:repeat(2,1fr);}
+  .foot-cols{grid-template-columns:1fr 1fr;gap:36px;}
+}
+@media(max-width:768px){
+  .wrap{padding:0 20px;}
+  .sec{padding:72px 0;}
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:var(--ink);padding:24px 20px;gap:20px;border-top:1px solid rgba(255,255,255,.06);}
+  .nav-menu.open{display:flex;}
+  .hamburger{display:flex;}
+  .trust-inner{flex-wrap:wrap;}
+  .trust-item{flex:1 1 50%;border-right:none;border-bottom:1px solid rgba(10,22,40,.12);}
+  #services .svc-grid{grid-template-columns:1fr;}
+  #education .edu-grid{grid-template-columns:1fr;}
+  #skills .sk-cols{grid-template-columns:1fr 1fr;}
+  .training-row{grid-template-columns:1fr 1fr;}
+  #blog .blog-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr!important;}
+  #contact .contact-cols{grid-template-columns:1fr;}
+  .form-duo{grid-template-columns:1fr;}
+  .foot-cols{grid-template-columns:1fr;}
+  .exp-row{grid-template-columns:1fr;gap:8px;}
+  .exp-period{margin-bottom:6px;}
+}
+@media(max-width:480px){
+  .strength-grid{grid-template-columns:1fr;}
+  #skills .sk-cols{grid-template-columns:1fr;}
+  .training-row{grid-template-columns:1fr;}
+  .contact-form-wrap{padding:28px 20px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;}
+  *{animation:none!important;transition:none!important;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="n" id="navName"></span>
+        <span class="d" id="navTagline"></span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact" class="nav-cta-link">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="ham" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left wrap" style="padding-left:32px;">
+    <div class="hero-badge rv" id="heroBadge"></div>
+    <h1 class="rv rv-d1" id="heroH1"></h1>
+    <p class="hero-desc rv rv-d2" id="heroDesc"></p>
+    <div class="hero-actions rv rv-d3">
+      <a href="#contact" class="btn btn-gold">Get in Touch</a>
+      <a href="#services" class="btn btn-ghost-light">View Services</a>
+      <a href="#" id="heroCV" class="btn btn-ghost-light" onclick="return false;">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="credential-stack" id="credStack"></div>
+  </div>
+  
+</section>
+
+<!-- TRUST -->
+<div id="trust">
+  <div class="trust-inner" id="trustInner"></div>
+</div>
+<div class="wrap"></div>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec--white">
+  <div class="wrap">
+    <div class="about-cols">
+      <div class="about-prose rv">
+        <span class="sec-label">About</span>
+        <h2 id="aboutHeading"></h2>
+        <div class="sec-rule" style="margin-bottom:36px;"></div>
+        <div id="aboutParas"></div>
+        <div class="strength-grid" id="aboutStrengths"></div>
+        
+      </div>
+      <div class="fact-list rv rv-d1" id="aboutFacts"></div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec sec--parchment">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">What I Offer</span>
+      <h2>Professional Services</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+    
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec sec--white">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Career History</span>
+      <h2>Professional Experience</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="exp-list wrap--narrow" id="expList" style="padding:0;"></div>
+    <div class="wrap--narrow" style="padding:0;"></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec sec--parchment">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Qualifications</span>
+      <h2>Education &amp; Certifications</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="edu-grid" id="eduGrid"></div>
+    
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec sec--white">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Capabilities</span>
+      <h2>Skills &amp; Competencies</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="sk-cols" id="skCols"></div>
+    
+    <div class="training-row" id="trainingRow" style="margin-top:72px;"></div>
+    
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="sec sec--parchment">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Insights</span>
+      <h2>Finance &amp; Audit Blog</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+    
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec sec--dark">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;text-align:center;">
+      <span class="sec-label">What People Say</span>
+      <h2 style="color:var(--white);">Testimonials</h2>
+      <div class="sec-rule sec-rule--center"></div>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+    
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec sec--white">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Get In Touch</span>
+      <h2>Contact</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="contact-cols">
+      <div class="contact-lede rv">
+        <h3 style="margin-bottom:18px;" id="contactHeading"></h3>
+        <p id="contactIntro"></p>
+        <div class="cd-item"><div class="cd-icon">📞</div><div class="cd-text"><strong>Phone</strong><span id="cdPhone"></span></div></div>
+        <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong>Email</strong><span id="cdEmail"></span></div></div>
+        <div class="cd-item"><div class="cd-icon">💼</div><div class="cd-text"><strong>LinkedIn</strong><a id="cdLinkedIn" href="#" target="_blank" rel="noopener"></a></div></div>
+        <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong>Location</strong><span id="cdLocation"></span></div></div>
+        <div class="cd-item"><div class="cd-icon">🌐</div><div class="cd-text"><strong>Website</strong><span id="cdWebsite"></span></div></div>
+      </div>
+      <form class="contact-form-wrap rv rv-d1" id="contactForm">
+        <div class="form-duo">
+          <div class="fg"><label for="fn">Full Name</label><input type="text" id="fn" name="name" placeholder="Your full name"/></div>
+          <div class="fg"><label for="em">Email</label><input type="email" id="em" name="email" placeholder="you@example.com"/></div>
+        </div>
+        <div class="fg"><label for="sv">Service</label><select id="sv" name="service"></select></div>
+        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" name="subject" placeholder="Brief subject line"/></div>
+        <div class="fg"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="How can I help you?"></textarea></div>
+        <button class="btn btn-gold btn-submit" type="submit" id="contactSubmit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div class="foot-brand">
+        <div class="nm" id="footName"></div>
+        <div class="dm" id="footDomain"></div>
+        <p id="footBlurb"></p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>More</h5>
+        <ul>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact-items">
+        <h5>Contact</h5>
+        <div class="fi"><span id="footPhone"></span></div>
+        <div class="fi"><span id="footEmail"></span></div>
+        <div class="fi"><span id="footLoc"></span></div>
+        <div class="fi"><span id="footWeb"></span></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; <span id="footCopyYear"></span> <span id="footCopyName"></span>. All rights reserved.</p>
+      <p id="footBottomLine"></p>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Back to top">↑</button>
+
+</body>
+
+<script id="seedData">window.__SEED__ = {
+  "meta": {
+    "title": "Sures Guragai — Finance & Audit Professional",
+    "description": "Sures Guragai – Semi-Qualified CA. Finance & Audit Professional offering accounting, bookkeeping, audit support, and taxation services in Nepal.",
+    "keywords": "Sures Guragai, CA Nepal, Finance Professional, Audit, Bookkeeping, VAT, TDS, Financial Reporting",
+    "author": "Sures Guragai",
+    "domain": "suresguragai.com.np",
+    "formspreeId": ""
+  },
+  "nav": {
+    "name": "Sures Guragai",
+    "tagline": "suresguragai.com.np"
+  },
+  "hero": {
+    "badge": "Finance & Audit Professional · Semi-Qualified CA",
+    "headingLine1": "Precision in",
+    "headingLine2": "every ledger.",
+    "desc": "Seven years across statutory audit, reconciliation, bookkeeping, and taxation — in Nepal and India. Currently Finance Solutions Officer at Nepal Works. CA Final Group I cleared, January 2026.",
+    "cvUrl": "",
+    "credentials": [
+      {
+        "label": "CA Status",
+        "value": "Final<br>Group I Passed",
+        "sub": "ICAI · January 2026"
+      },
+      {
+        "label": "Experience",
+        "value": "7+ Years",
+        "sub": "Audit & Finance"
+      },
+      {
+        "label": "Training Hours",
+        "value": "335 hrs",
+        "sub": "ICAI Programmes"
+      },
+      {
+        "label": "Location",
+        "value": "Kathmandu",
+        "sub": "Nepal"
+      }
+    ]
+  },
+  "trust": [
+    {
+      "text": "ICAI — CPT & IPCC Groups I & II Passed"
+    },
+    {
+      "text": "CA Final Group I Passed · Jan 2026"
+    },
+    {
+      "text": "Statutory & Internal Audit Experience"
+    },
+    {
+      "text": "VAT · TDS · Financial Reconciliation"
+    },
+    {
+      "text": "Nepal & India Practice Background"
+    }
+  ],
+  "about": {
+    "heading": "A finance professional who gets the details right",
+    "paragraphs": [
+      {
+        "text": "I am <strong>Sures Guragai</strong>, a finance and audit professional based in Kathmandu. My CA journey began in 2016 as an Articled Audit Assistant in India, and over the past seven years I have built hands-on experience across statutory audit, internal audit, bookkeeping, VAT & TDS compliance, and financial reconciliation."
+      },
+      {
+        "text": "I currently serve as <strong>Finance Solutions Officer at Nepal Works</strong>, where I manage commission calculations, ledger monitoring, data accuracy controls, and day-to-day reconciliation workflows. Prior to this I spent over two years at Trust Haven Professional in Kathmandu performing statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors."
+      },
+      {
+        "text": "My early training across firms in New Delhi and Noida gave me strong foundations in bank audits, NPA review, income tax compliance, and company incorporation matters. Alongside professional work I am concurrently pursuing an MBS and LLB to deepen my understanding of business and legal frameworks."
+      },
+      {
+        "text": "I bring a disciplined, detail-oriented approach to every engagement — whether ensuring a ledger reconciles to the last rupee or structuring clean financial records for an audit."
+      }
+    ],
+    "strengths": [
+      {
+        "text": "Audit & Compliance"
+      },
+      {
+        "text": "Financial Reconciliation"
+      },
+      {
+        "text": "VAT & TDS Returns"
+      },
+      {
+        "text": "Bookkeeping"
+      },
+      {
+        "text": "Internal Controls"
+      },
+      {
+        "text": "Commission Validation"
+      },
+      {
+        "text": "Reporting Support"
+      },
+      {
+        "text": "Analytical Thinking"
+      }
+    ],
+    "facts": [
+      {
+        "key": "Current Role",
+        "val": "Finance Solutions Officer — Nepal Works"
+      },
+      {
+        "key": "CA Status",
+        "val": "CA Final · Group I Passed (Jan 2026)<br>Group II Ongoing"
+      },
+      {
+        "key": "Other Qualifications",
+        "val": "IPCC Groups I & II · CPT · B.Com (IGNOU)"
+      },
+      {
+        "key": "Pursuing",
+        "val": "MBS & LLB (Ongoing)"
+      },
+      {
+        "key": "Location",
+        "val": "Kathmandu, Nepal"
+      },
+      {
+        "key": "Languages",
+        "val": "Nepali · English · Hindi"
+      },
+      {
+        "key": "Contact",
+        "val": "+977 9848273802<br>Sureshguragain10@gmail.com"
+      }
+    ]
+  },
+  "services": [
+    {
+      "title": "Accounting & Bookkeeping",
+      "desc": "Accurate, well-organised records that keep your business in control and audit-ready.",
+      "items": [
+        {
+          "text": "General ledger maintenance"
+        },
+        {
+          "text": "Bank & account reconciliation"
+        },
+        {
+          "text": "Day-to-day transaction recording"
+        },
+        {
+          "text": "Month-end and year-end closing"
+        }
+      ]
+    },
+    {
+      "title": "Taxation Support",
+      "desc": "Timely preparation and filing of tax returns to keep your business compliant.",
+      "items": [
+        {
+          "text": "VAT return preparation & filing"
+        },
+        {
+          "text": "TDS return preparation & filing"
+        },
+        {
+          "text": "Income tax compliance support"
+        },
+        {
+          "text": "Tax audit documentation"
+        }
+      ]
+    },
+    {
+      "title": "Audit Support",
+      "desc": "Thorough audit assistance from planning to reporting, across multiple industries.",
+      "items": [
+        {
+          "text": "Statutory audit support"
+        },
+        {
+          "text": "Internal audit assignments"
+        },
+        {
+          "text": "Vouching & verification"
+        },
+        {
+          "text": "Audit working paper preparation"
+        }
+      ]
+    },
+    {
+      "title": "Financial Reporting",
+      "desc": "Clear financial statements and reports for informed stakeholder decision-making.",
+      "items": [
+        {
+          "text": "Balance sheet & P&L preparation"
+        },
+        {
+          "text": "Provisional financial statements"
+        },
+        {
+          "text": "Financial data accuracy review"
+        },
+        {
+          "text": "Management reporting support"
+        }
+      ]
+    },
+    {
+      "title": "Compliance & Regulatory",
+      "desc": "Helping organisations meet statutory obligations and avoid compliance risk.",
+      "items": [
+        {
+          "text": "ROC annual return filings"
+        },
+        {
+          "text": "Companies Act compliance"
+        },
+        {
+          "text": "Director appointment filings"
+        },
+        {
+          "text": "DIN applications & incorporation"
+        }
+      ]
+    },
+    {
+      "title": "Internal Control Support",
+      "desc": "Identifying gaps and strengthening controls to protect your organisation's assets.",
+      "items": [
+        {
+          "text": "Control environment assessment"
+        },
+        {
+          "text": "Process review & documentation"
+        },
+        {
+          "text": "Discrepancy identification"
+        },
+        {
+          "text": "Reconciliation oversight"
+        }
+      ]
+    },
+    {
+      "title": "Financial Analysis & Budgeting",
+      "desc": "Analytical support to plan, forecast, and evaluate financial performance.",
+      "items": [
+        {
+          "text": "Cost sheet preparation"
+        },
+        {
+          "text": "Budget preparation support"
+        },
+        {
+          "text": "Variance & trend analysis"
+        },
+        {
+          "text": "Financial data management"
+        }
+      ]
+    },
+    {
+      "title": "Commission Calculation",
+      "desc": "Accurate commission validation and reconciliation for complex payout structures.",
+      "items": [
+        {
+          "text": "Commission structure review"
+        },
+        {
+          "text": "Data validation & cross-checking"
+        },
+        {
+          "text": "Discrepancy resolution"
+        },
+        {
+          "text": "Reconciliation reporting"
+        }
+      ]
+    },
+    {
+      "title": "Business Advisory",
+      "desc": "Practical financial guidance for start-ups and SMEs building sound foundations.",
+      "items": [
+        {
+          "text": "Company incorporation support"
+        },
+        {
+          "text": "Financial record setup"
+        },
+        {
+          "text": "Bank empanelment support"
+        },
+        {
+          "text": "Scrutiny & refund matter support"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "period": "Dec 2024<br>Present",
+      "title": "Finance Solutions Officer",
+      "company": "Nepal Works · Kathmandu, Nepal",
+      "bullets": [
+        {
+          "text": "Handle commission calculation and validation to support accurate and timely financial processing."
+        },
+        {
+          "text": "Monitor ledgers and financial records to identify discrepancies and maintain data accuracy."
+        },
+        {
+          "text": "Manage financial data requirements and support timely reconciliation across operational workflows."
+        },
+        {
+          "text": "Strengthen day-to-day control and reporting discipline across finance operations."
+        }
+      ]
+    },
+    {
+      "period": "Jan 2022<br>Mar 2024",
+      "title": "Assistant Auditor",
+      "company": "Trust Haven Professional · Lazimpat, Kathmandu, Nepal",
+      "bullets": [
+        {
+          "text": "Performed statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors."
+        },
+        {
+          "text": "Prepared VAT and TDS returns; supported accounting, bookkeeping, and cost sheet preparation."
+        },
+        {
+          "text": "Contributed to internal audit engagements and company incorporation support work."
+        },
+        {
+          "text": "Key clients: Paragon Engineering, Center for Autism, Kantipur Job Solution, Pork Hub Restaurant, Haleshi Securities."
+        }
+      ]
+    },
+    {
+      "period": "Dec 2017<br>May 2019",
+      "title": "Articled Audit Assistant",
+      "company": "Gaur & Company · Laxmi Nagar, New Delhi, India",
+      "bullets": [
+        {
+          "text": "Supported statutory, management, and operational audits for banks, hospitals, automobile dealerships, and electronics businesses."
+        },
+        {
+          "text": "Handled vouching and verification, audit of statutory liabilities, and account finalisation support."
+        },
+        {
+          "text": "Reviewed loans and advances; checked NPA-related records in banking audit assignments."
+        }
+      ]
+    },
+    {
+      "period": "Mar 2016<br>Feb 2017",
+      "title": "Articled Audit Assistant",
+      "company": "M. Sippy & Associates · Sector 16, Noida, Uttar Pradesh, India",
+      "bullets": [
+        {
+          "text": "Assisted with GST and TDS return filing, tax audit support, and compliance documentation."
+        },
+        {
+          "text": "Provided support for bookkeeping, account finalisation, and client audit assignments."
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "tag": "CA — ICAI",
+      "title": "CA Final · Group I",
+      "inst": "Institute of Chartered Accountants of India",
+      "yr": "January 2026",
+      "status": "Passed",
+      "statusType": "pass",
+      "status2": "Group II — Ongoing"
+    },
+    {
+      "tag": "CA — ICAI",
+      "title": "IPCC · Groups I & II",
+      "inst": "Institute of Chartered Accountants of India",
+      "yr": "Nov 2016 & Nov 2018",
+      "status": "Both Groups Passed",
+      "statusType": "pass"
+    },
+    {
+      "tag": "CA — ICAI",
+      "title": "CPT",
+      "inst": "Institute of Chartered Accountants of India",
+      "yr": "December 2013",
+      "status": "Passed",
+      "statusType": "pass"
+    },
+    {
+      "tag": "Postgraduate",
+      "title": "MBS — Master of Business Studies",
+      "inst": "Currently Pursuing",
+      "yr": "Ongoing",
+      "status": "In Progress",
+      "statusType": "on"
+    },
+    {
+      "tag": "Law",
+      "title": "LLB — Bachelor of Laws",
+      "inst": "Currently Pursuing",
+      "yr": "Ongoing",
+      "status": "In Progress",
+      "statusType": "on"
+    },
+    {
+      "tag": "Undergraduate",
+      "title": "B.Com · Accounting & Finance",
+      "inst": "Indira Gandhi National Open University (IGNOU)",
+      "yr": "Completed 2024",
+      "status": "Completed",
+      "statusType": "pass"
+    },
+    {
+      "tag": "Higher Secondary",
+      "title": "+2 Management (HSEB)",
+      "inst": "College for Higher Education, Birtamod, Jhapa",
+      "yr": "2011 – 2013",
+      "status": "Completed",
+      "statusType": "pass"
+    },
+    {
+      "tag": "High School",
+      "title": "Secondary Level (SLC)",
+      "inst": "Government of Nepal",
+      "yr": "2010",
+      "status": "Completed",
+      "statusType": "pass"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Finance & Audit",
+      "tags": [
+        {
+          "text": "Commission Calculation"
+        },
+        {
+          "text": "Reconciliation"
+        },
+        {
+          "text": "General Ledger Review"
+        },
+        {
+          "text": "Vouching & Verification"
+        },
+        {
+          "text": "Statutory Audit"
+        },
+        {
+          "text": "Internal Audit"
+        },
+        {
+          "text": "Bank Audit"
+        },
+        {
+          "text": "NPA Review"
+        },
+        {
+          "text": "Account Finalisation"
+        }
+      ]
+    },
+    {
+      "label": "Taxation & Compliance",
+      "tags": [
+        {
+          "text": "VAT Returns"
+        },
+        {
+          "text": "TDS Returns"
+        },
+        {
+          "text": "Income Tax"
+        },
+        {
+          "text": "GST Filing"
+        },
+        {
+          "text": "Tax Audit Support"
+        },
+        {
+          "text": "ROC Filings"
+        },
+        {
+          "text": "Companies Act"
+        },
+        {
+          "text": "Scrutiny Matters"
+        },
+        {
+          "text": "DIN Applications"
+        }
+      ]
+    },
+    {
+      "label": "Reporting & Documentation",
+      "tags": [
+        {
+          "text": "Financial Statements"
+        },
+        {
+          "text": "Provisional Balance Sheets"
+        },
+        {
+          "text": "Cost Sheet Preparation"
+        },
+        {
+          "text": "Audit Working Papers"
+        },
+        {
+          "text": "Management Reports"
+        },
+        {
+          "text": "Compliance Docs"
+        }
+      ]
+    },
+    {
+      "label": "Professional Strengths",
+      "tags": [
+        {
+          "text": "Analytical Problem Solving"
+        },
+        {
+          "text": "Attention to Detail"
+        },
+        {
+          "text": "Stakeholder Communication"
+        },
+        {
+          "text": "Cross-functional Collaboration"
+        },
+        {
+          "text": "Process Improvement"
+        },
+        {
+          "text": "Decision Making"
+        }
+      ]
+    },
+    {
+      "label": "Sector Experience",
+      "tags": [
+        {
+          "text": "Banking"
+        },
+        {
+          "text": "Engineering"
+        },
+        {
+          "text": "Securities"
+        },
+        {
+          "text": "Non-profit / NGO"
+        },
+        {
+          "text": "Restaurant & F&B"
+        },
+        {
+          "text": "Hospital"
+        },
+        {
+          "text": "Automobile"
+        },
+        {
+          "text": "Electronics"
+        },
+        {
+          "text": "Employment Services"
+        }
+      ]
+    },
+    {
+      "label": "Languages",
+      "tags": [
+        {
+          "text": "Nepali (Native)"
+        },
+        {
+          "text": "English (Professional)"
+        },
+        {
+          "text": "Hindi (Proficient)"
+        }
+      ]
+    }
+  ],
+  "training": [
+    {
+      "hrs": "100",
+      "title": "Computer Training",
+      "desc": "Completed as part of ICAI articleship requirements."
+    },
+    {
+      "hrs": "35",
+      "title": "Orientation Programme",
+      "desc": "ICAI orientation covering professional standards and ethics."
+    },
+    {
+      "hrs": "110",
+      "title": "Advanced IT Training",
+      "desc": "Advanced Information Technology course under ICAI curriculum."
+    },
+    {
+      "hrs": "90",
+      "title": "Management & Communication",
+      "desc": "ICAI programme in management concepts and professional communication."
+    }
+  ],
+  "blog": [
+    {
+      "cat": "Taxation · Nepal",
+      "title": "Understanding VAT Compliance for Small Businesses in Nepal",
+      "excerpt": "A practical guide to VAT registration thresholds, return filing timelines, and common compliance pitfalls small business owners face.",
+      "tag": "Coming Soon",
+      "url": ""
+    },
+    {
+      "cat": "Audit · Finance",
+      "title": "What Internal Audit Can Do Beyond Compliance",
+      "excerpt": "Internal audit is more than a checkbox. Explore how an effective function adds real business value by improving controls and risk management.",
+      "tag": "Coming Soon",
+      "url": ""
+    },
+    {
+      "cat": "CA Career",
+      "title": "Clearing CA Final Group I While Working Full-Time",
+      "excerpt": "A candid look at balancing professional work and CA exam preparation — with strategies that helped me pass Group I in January 2026.",
+      "tag": "Coming Soon",
+      "url": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
+      "name": "[Colleague Name]",
+      "role": "Nepal Works · Finance Team",
+      "avatar": "C"
+    },
+    {
+      "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
+      "name": "[Client Name]",
+      "role": "Audit Client · Kathmandu",
+      "avatar": "A"
+    },
+    {
+      "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
+      "name": "[Business Owner Name]",
+      "role": "SME Client · Nepal",
+      "avatar": "B"
+    }
+  ],
+  "contact": {
+    "heading": "Let's work together",
+    "intro": "Available for freelance engagements, consulting work, and full-time opportunities. Reach out via the form or directly using the details below.",
+    "phone": "+977 9848273802",
+    "email": "Sureshguragain10@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sures-guragai11/",
+    "linkedinLabel": "linkedin.com/in/sures-guragai11",
+    "location": "Kathmandu, Nepal",
+    "website": "suresguragai.com.np",
+    "services": [
+      {
+        "text": "Accounting & Bookkeeping"
+      },
+      {
+        "text": "Taxation Support (VAT / TDS)"
+      },
+      {
+        "text": "Audit Support"
+      },
+      {
+        "text": "Financial Reporting"
+      },
+      {
+        "text": "Internal Control Support"
+      },
+      {
+        "text": "Commission Calculation"
+      },
+      {
+        "text": "Business Advisory"
+      },
+      {
+        "text": "General Enquiry"
+      }
+    ]
+  },
+  "footer": {
+    "blurb": "Finance and audit professional. Semi-Qualified CA (ICAI) with 7+ years of experience in accounting, bookkeeping, audit, and taxation across Nepal and India.",
+    "bottomLine": "Finance & Audit Professional · Semi-Qualified CA · Kathmandu, Nepal",
+    "year": "2025"
+  }
+};</script>
+<script>
+/* ============================================================
+   SURES GURAGAI — live site (Netlify + Decap CMS)
+   Loads content.json at runtime. Edits made in /admin publish
+   themselves via Netlify — no manual export/upload.
+============================================================ */
+
+const esc = s => String(s == null ? '' : s);
+const $ = sel => document.querySelector(sel);
+const create = (tag, cls, html) => {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  if (html != null) el.innerHTML = html;
+  return el;
+};
+/* unwrap CMS list items: [{text:"a"}] -> ["a"]; plain strings pass through */
+const txt = v => (v && typeof v === 'object' && 'text' in v) ? v.text : v;
+const list = a => Array.isArray(a) ? a.map(txt) : [];
+
+let DATA = window.__SEED__; // fallback if fetch fails
+
+function normalize(d) {
+  // accept both CMS shape and plain seed shape
+  d.trust = list(d.trust);
+  if (d.about) {
+    d.about.paragraphs = list(d.about.paragraphs);
+    d.about.strengths = list(d.about.strengths);
+  }
+  (d.services || []).forEach(s => s.items = list(s.items));
+  (d.experience || []).forEach(x => x.bullets = list(x.bullets));
+  (d.skills || []).forEach(g => g.tags = list(g.tags));
+  if (d.contact) d.contact.services = list(d.contact.services);
+  return d;
+}
+
+/* ---- RENDER ---- */
+function render() {
+  renderMeta(); renderNav(); renderHero(); renderTrust(); renderAbout();
+  renderServices(); renderExperience(); renderEducation(); renderSkills();
+  renderTraining(); renderBlog(); renderTestimonials(); renderContact(); renderFooter();
+  observeReveal();
+}
+
+function renderMeta() {
+  document.title = DATA.meta.title;
+  const set = (sel, val) => { const e = $(sel); if (e) e.setAttribute('content', val); };
+  set('meta[name="description"]', DATA.meta.description);
+  set('meta[name="keywords"]', DATA.meta.keywords || '');
+  set('meta[name="author"]', DATA.meta.author || '');
+}
+function renderNav() {
+  $('#navName').textContent = DATA.nav.name;
+  $('#navTagline').textContent = DATA.nav.tagline;
+}
+function renderHero() {
+  const h = DATA.hero;
+  $('#heroBadge').innerHTML = esc(h.badge);
+  $('#heroH1').innerHTML = `${esc(h.headingLine1)}<br><i>${esc(h.headingLine2)}</i>`;
+  $('#heroDesc').innerHTML = esc(h.desc);
+  const cv = $('#heroCV');
+  if (h.cvUrl) { cv.href = h.cvUrl; cv.removeAttribute('onclick'); cv.target = '_blank'; cv.style.display = ''; }
+  else { cv.style.display = 'none'; }
+  const stack = $('#credStack'); stack.innerHTML = '';
+  (h.credentials || []).forEach((c, i) => stack.appendChild(create('div', 'cred-item rv' + (i ? ' rv-d' + i : ''),
+    `<div class="cred-label">${esc(c.label)}</div><div class="cred-value">${esc(c.value)}</div><div class="cred-sub">${esc(c.sub)}</div>`)));
+}
+function renderTrust() {
+  const check = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#0A1628" stroke-width="1.4"/><path d="M4 7l2 2 4-4" stroke="#0A1628" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const w = $('#trustInner'); w.innerHTML = '';
+  DATA.trust.forEach(t => w.appendChild(create('div', 'trust-item', `${check}${esc(t)}`)));
+}
+function renderAbout() {
+  const a = DATA.about;
+  $('#aboutHeading').innerHTML = esc(a.heading);
+  const pw = $('#aboutParas'); pw.innerHTML = '';
+  a.paragraphs.forEach(p => pw.appendChild(create('p', '', esc(p))));
+  const sg = $('#aboutStrengths'); sg.innerHTML = '';
+  a.strengths.forEach(s => sg.appendChild(create('span', 'str-tag', esc(s))));
+  const fl = $('#aboutFacts'); fl.innerHTML = '';
+  a.facts.forEach(f => fl.appendChild(create('div', 'fact-row',
+    `<div class="fact-key">${esc(f.key)}</div><div class="fact-val">${esc(f.val)}</div>`)));
+}
+function renderServices() {
+  const g = $('#svcGrid'); g.innerHTML = '';
+  DATA.services.forEach((s, i) => {
+    const items = s.items.map(it => `<li>${esc(it)}</li>`).join('');
+    g.appendChild(create('div', 'svc-card rv' + (i % 3 ? ' rv-d' + (i % 3) : ''),
+      `<div class="svc-num">${String(i + 1).padStart(2, '0')}</div><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><ul class="svc-list">${items}</ul>`));
+  });
+}
+function renderExperience() {
+  const l = $('#expList'); l.innerHTML = '';
+  DATA.experience.forEach(x => {
+    const b = x.bullets.map(t => `<li>${esc(t)}</li>`).join('');
+    l.appendChild(create('div', 'exp-row rv',
+      `<div class="exp-period">${esc(x.period)}</div><div class="exp-body"><div class="exp-title">${esc(x.title)}</div><div class="exp-co">${esc(x.company)}</div><ul class="exp-bullets">${b}</ul></div>`));
+  });
+}
+function renderEducation() {
+  const g = $('#eduGrid'); g.innerHTML = '';
+  DATA.education.forEach((e, i) => {
+    const st2 = e.status2 ? `<span class="edu-status s-pend" style="margin-left:6px;">${esc(e.status2)}</span>` : '';
+    g.appendChild(create('div', 'edu-card rv' + (i % 4 ? ' rv-d' + (i % 4) : ''),
+      `<span class="edu-tag">${esc(e.tag)}</span><h3>${esc(e.title)}</h3><div class="inst">${esc(e.inst)}</div><div class="yr">${esc(e.yr)}</div><span class="edu-status s-${e.statusType || 'pass'}">${esc(e.status)}</span>${st2}`));
+  });
+}
+function renderSkills() {
+  const c = $('#skCols'); c.innerHTML = '';
+  DATA.skills.forEach((grp, i) => {
+    const tags = grp.tags.map(t => `<span class="sk-tag">${esc(t)}</span>`).join('');
+    c.appendChild(create('div', 'sk-group rv' + (i % 3 ? ' rv-d' + (i % 3) : ''),
+      `<div class="sk-group-label">${esc(grp.label)}</div><div class="sk-tags">${tags}</div>`));
+  });
+}
+function renderTraining() {
+  const r = $('#trainingRow'); r.innerHTML = '';
+  DATA.training.forEach(t => r.appendChild(create('div', 'tr-card',
+    `<div class="tr-hrs">${esc(t.hrs)}</div><div class="tr-desc"><strong>${esc(t.title)}</strong>${esc(t.desc)}</div>`)));
+}
+function renderBlog() {
+  const g = $('#blogGrid'); g.innerHTML = '';
+  DATA.blog.forEach((b, i) => {
+    const link = b.url
+      ? `<a class="blog-link" href="${esc(b.url)}" target="_blank" rel="noopener">Read →</a>`
+      : `<a class="blog-link" href="#" onclick="return false;" style="opacity:.5;cursor:default;">Read →</a>`;
+    g.appendChild(create('div', 'blog-card rv' + (i % 3 ? ' rv-d' + (i % 3) : ''),
+      `<div class="blog-bar"></div><div class="blog-body"><div class="blog-cat">${esc(b.cat)}</div><h3>${esc(b.title)}</h3><p>${esc(b.excerpt)}</p><div class="blog-footer"><span>${esc(b.tag)}</span>${link}</div></div>`));
+  });
+}
+function renderTestimonials() {
+  const g = $('#testiGrid'); g.innerHTML = '';
+  DATA.testimonials.forEach((t, i) => g.appendChild(create('div', 'testi-card rv' + (i % 3 ? ' rv-d' + (i % 3) : ''),
+    `<div class="testi-mark">"</div><p>${esc(t.quote)}</p><div class="testi-author"><div class="testi-av">${esc(t.avatar)}</div><div><div class="testi-nm">${esc(t.name)}</div><div class="testi-rl">${esc(t.role)}</div></div></div>`)));
+}
+function renderContact() {
+  const c = DATA.contact;
+  $('#contactHeading').innerHTML = esc(c.heading);
+  $('#contactIntro').innerHTML = esc(c.intro);
+  $('#cdPhone').textContent = c.phone;
+  $('#cdEmail').textContent = c.email;
+  const ln = $('#cdLinkedIn'); ln.href = c.linkedin; ln.textContent = c.linkedinLabel;
+  $('#cdLocation').textContent = c.location;
+  $('#cdWebsite').textContent = c.website;
+  $('#sv').innerHTML = '<option value="">Select a service...</option>' + c.services.map(s => `<option>${esc(s)}</option>`).join('');
+  const form = $('#contactForm');
+  if (DATA.meta.formspreeId) {
+    form.action = 'https://formspree.io/f/' + DATA.meta.formspreeId;
+    form.method = 'POST';
+    $('#contactSubmit').textContent = 'Send Message';
+  } else {
+    form.addEventListener('submit', e => { e.preventDefault(); alert('Contact form not yet connected. Add a Formspree ID in the content manager.'); });
+  }
+}
+function renderFooter() {
+  const f = DATA.footer;
+  $('#footName').textContent = DATA.nav.name;
+  $('#footDomain').textContent = DATA.meta.domain;
+  $('#footBlurb').innerHTML = esc(f.blurb);
+  $('#footPhone').textContent = '📞 ' + DATA.contact.phone;
+  $('#footEmail').textContent = '✉️ ' + DATA.contact.email;
+  $('#footLoc').textContent = '📍 ' + DATA.contact.location;
+  $('#footWeb').textContent = '🌐 ' + DATA.contact.website;
+  $('#footCopyYear').textContent = f.year;
+  $('#footCopyName').textContent = DATA.nav.name;
+  $('#footBottomLine').innerHTML = esc(f.bottomLine);
+}
+
+/* reveal-on-scroll */
+let _io;
+function observeReveal() {
+  if (!_io) _io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); _io.unobserve(e.target); } }), { threshold: .08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.rv:not(.in)').forEach(el => _io.observe(el));
+}
+
+/* boot: fetch live content, fall back to baked seed */
+async function boot() {
+  try {
+    const res = await fetch('content.json', { cache: 'no-store' });
+    if (res.ok) DATA = await res.json();
+  } catch (e) { /* offline / fallback to seed */ }
+  DATA = normalize(DATA);
+  render();
+
+  const nav = $('#nav'), btt = $('#btt');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 30);
+    btt.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+  $('#ham').addEventListener('click', () => $('#navMenu').classList.toggle('open'));
+  $('#navMenu').querySelectorAll('a').forEach(a => a.addEventListener('click', () => $('#navMenu').classList.remove('open')));
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else boot();
+
+</script>
+</html>

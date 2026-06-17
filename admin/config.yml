@@ -2,10 +2,10 @@ backend:
   name: github
   repo: suresguragai10/website
   branch: main
- 
+
 media_folder: "uploads"
 public_folder: "/uploads"
- 
+
 collections:
   - name: "site"
     label: "Website Content"
@@ -22,41 +22,43 @@ collections:
             widget: "object"
             fields:
               - { label: "Browser Tab Title", name: "title", widget: "string" }
-              - { label: "SEO Description", name: "description", widget: "text" }
+              - { label: "SEO Description", name: "description", widget: "text", required: false }
               - { label: "SEO Keywords", name: "keywords", widget: "string", required: false }
               - { label: "Author", name: "author", widget: "string", required: false }
-              - { label: "Domain", name: "domain", widget: "string" }
+              - { label: "Domain", name: "domain", widget: "string", required: false }
               - { label: "Formspree Form ID (for contact form)", name: "formspreeId", widget: "string", required: false, hint: "Get one free at formspree.io. The part after /f/ in your form URL." }
- 
+
           - label: "Top Bar (Logo)"
             name: "nav"
             widget: "object"
             fields:
               - { label: "Name", name: "name", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
- 
+              - { label: "Tagline", name: "tagline", widget: "string", required: false }
+
           - label: "Hero (Top Section)"
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Badge Text", name: "badge", widget: "string", required: false }
               - { label: "Heading Line 1", name: "headingLine1", widget: "string" }
-              - { label: "Heading Line 2 (italic)", name: "headingLine2", widget: "string" }
-              - { label: "Intro Paragraph", name: "desc", widget: "text" }
+              - { label: "Heading Line 2 (italic)", name: "headingLine2", widget: "string", required: false }
+              - { label: "Intro Paragraph", name: "desc", widget: "text", required: false }
               - { label: "CV Download Link", name: "cvUrl", widget: "string", required: false, hint: "Paste a link to your CV PDF. Leave blank to hide." }
               - label: "Credential Cards (right side)"
                 name: "credentials"
                 widget: "list"
+                required: false
                 fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Big Value", name: "value", widget: "string", hint: "Use <br> for a line break" }
-                  - { label: "Subtext", name: "sub", widget: "string" }
- 
+                  - { label: "Label", name: "label", widget: "string", required: false }
+                  - { label: "Big Value", name: "value", widget: "string", required: false, hint: "Use <br> for a line break" }
+                  - { label: "Subtext", name: "sub", widget: "string", required: false }
+
           - label: "Trust Strip (badges under hero)"
             name: "trust"
             widget: "list"
-            field: { label: "Badge Text", name: "text", widget: "string" }
- 
+            required: false
+            field: { label: "Badge Text", name: "text", widget: "string", required: false }
+
           - label: "About Section"
             name: "about"
             widget: "object"
@@ -65,111 +67,125 @@ collections:
               - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"
-                field: { label: "Paragraph", name: "text", widget: "text", hint: "You can use <strong>text</strong> to make words bold." }
+                required: false
+                field: { label: "Paragraph", name: "text", widget: "text", required: false, hint: "You can use <strong>text</strong> to make words bold." }
               - label: "Strength Tags"
                 name: "strengths"
                 widget: "list"
-                field: { label: "Tag", name: "text", widget: "string" }
+                required: false
+                field: { label: "Tag", name: "text", widget: "string", required: false }
               - label: "Quick Facts (right column)"
                 name: "facts"
                 widget: "list"
+                required: false
                 fields:
-                  - { label: "Label", name: "key", widget: "string" }
-                  - { label: "Value", name: "val", widget: "string", hint: "Use <br> for a line break" }
- 
+                  - { label: "Label", name: "key", widget: "string", required: false }
+                  - { label: "Value", name: "val", widget: "string", required: false, hint: "Use <br> for a line break" }
+
           - label: "Services"
             name: "services"
             widget: "list"
+            required: false
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "desc", widget: "text", required: false }
               - label: "Bullet Points"
                 name: "items"
                 widget: "list"
-                field: { label: "Point", name: "text", widget: "string" }
- 
+                required: false
+                field: { label: "Point", name: "text", widget: "string", required: false }
+
           - label: "Experience"
             name: "experience"
             widget: "list"
+            required: false
             fields:
-              - { label: "Period", name: "period", widget: "string", hint: "e.g. Dec 2024<br>Present" }
-              - { label: "Job Title", name: "title", widget: "string" }
-              - { label: "Company & Location", name: "company", widget: "string" }
+              - { label: "Period", name: "period", widget: "string", required: false, hint: "e.g. Dec 2024<br>Present" }
+              - { label: "Job Title", name: "title", widget: "string", required: false }
+              - { label: "Company & Location", name: "company", widget: "string", required: false }
               - label: "Bullet Points"
                 name: "bullets"
                 widget: "list"
-                field: { label: "Point", name: "text", widget: "text" }
- 
+                required: false
+                field: { label: "Point", name: "text", widget: "text", required: false }
+
           - label: "Education & Certifications"
             name: "education"
             widget: "list"
+            required: false
             fields:
-              - { label: "Category Tag", name: "tag", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Institution", name: "inst", widget: "string" }
-              - { label: "Year", name: "yr", widget: "string" }
-              - { label: "Status", name: "status", widget: "string" }
-              - { label: "Status Colour", name: "statusType", widget: "select", options: ["pass", "on", "pend"], default: "pass", hint: "pass = green, on = blue, pend = amber" }
+              - { label: "Category Tag", name: "tag", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Institution", name: "inst", widget: "string", required: false }
+              - { label: "Year", name: "yr", widget: "string", required: false }
+              - { label: "Status", name: "status", widget: "string", required: false }
+              - { label: "Status Colour", name: "statusType", widget: "select", options: ["pass", "on", "pend"], default: "pass", required: false, hint: "pass = green, on = blue, pend = amber" }
               - { label: "Second Status (optional)", name: "status2", widget: "string", required: false }
- 
+
           - label: "Skills (groups)"
             name: "skills"
             widget: "list"
+            required: false
             fields:
-              - { label: "Group Label", name: "label", widget: "string" }
+              - { label: "Group Label", name: "label", widget: "string", required: false }
               - label: "Skill Tags"
                 name: "tags"
                 widget: "list"
-                field: { label: "Skill", name: "text", widget: "string" }
- 
+                required: false
+                field: { label: "Skill", name: "text", widget: "string", required: false }
+
           - label: "Training Hours"
             name: "training"
             widget: "list"
+            required: false
             fields:
-              - { label: "Hours", name: "hrs", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "desc", widget: "text" }
- 
+              - { label: "Hours", name: "hrs", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+
           - label: "Blog Posts"
             name: "blog"
             widget: "list"
+            required: false
             fields:
-              - { label: "Category", name: "cat", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Excerpt", name: "excerpt", widget: "text" }
-              - { label: "Tag (e.g. Coming Soon)", name: "tag", widget: "string" }
+              - { label: "Category", name: "cat", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+              - { label: "Tag (e.g. Coming Soon)", name: "tag", widget: "string", required: false }
               - { label: "Article URL", name: "url", widget: "string", required: false, hint: "Link to the full article. Leave blank if not ready." }
- 
+
           - label: "Testimonials"
             name: "testimonials"
             widget: "list"
+            required: false
             fields:
-              - { label: "Quote", name: "quote", widget: "text" }
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Role / Company", name: "role", widget: "string" }
-              - { label: "Avatar Letter", name: "avatar", widget: "string", hint: "A single letter shown in the circle." }
- 
+              - { label: "Quote", name: "quote", widget: "text", required: false }
+              - { label: "Name", name: "name", widget: "string", required: false }
+              - { label: "Role / Company", name: "role", widget: "string", required: false }
+              - { label: "Avatar Letter", name: "avatar", widget: "string", required: false, hint: "A single letter shown in the circle." }
+
           - label: "Contact"
             name: "contact"
             widget: "object"
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Intro Text", name: "intro", widget: "text" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
-              - { label: "LinkedIn Display Text", name: "linkedinLabel", widget: "string" }
-              - { label: "Location", name: "location", widget: "string" }
-              - { label: "Website", name: "website", widget: "string" }
+              - { label: "Intro Text", name: "intro", widget: "text", required: false }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+              - { label: "LinkedIn Display Text", name: "linkedinLabel", widget: "string", required: false }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Website", name: "website", widget: "string", required: false }
               - label: "Service Dropdown Options"
                 name: "services"
                 widget: "list"
-                field: { label: "Option", name: "text", widget: "string" }
- 
+                required: false
+                field: { label: "Option", name: "text", widget: "string", required: false }
+
           - label: "Footer"
             name: "footer"
             widget: "object"
             fields:
-              - { label: "Blurb", name: "blurb", widget: "text" }
-              - { label: "Bottom Line", name: "bottomLine", widget: "string" }
-              - { label: "Copyright Year", name: "year", widget: "string" }
+              - { label: "Blurb", name: "blurb", widget: "text", required: false }
+              - { label: "Bottom Line", name: "bottomLine", widget: "string", required: false }
+              - { label: "Copyright Year", name: "year", widget: "string", required: false }

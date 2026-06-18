@@ -59,11 +59,11 @@
       "Audit & Compliance",
       "Financial Reconciliation",
       "VAT & TDS Returns",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "Bookkeeping",
+      "Internal Controls",
+      "Commission Validation",
+      "Commission Validation",
+      "Analytical Thinking"
     ],
     "facts": [
       {
@@ -101,10 +101,10 @@
       "title": "Accounting & Bookkeeping",
       "desc": "Accurate, well-organised records that keep your business in control and audit-ready.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "General ledger maintenance",
+        "Bank & account reconciliation",
+        "Day-to-day transaction recording",
+        "Month-end and year-end closing"
       ]
     },
     {

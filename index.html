@@ -674,7 +674,8 @@ footer ul li a:hover{color:var(--gold-lt);}
 .foot-contact-items .fi{
   display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;
 }
-.foot-contact-items .fi span{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.5;}
+.foot-contact-items .fi span,.foot-contact-items .fi a{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.5;transition:color .2s;}
+.foot-contact-items .fi a:hover{color:var(--gold);}
 .foot-bottom{
   border-top:1px solid rgba(255,255,255,.06);
   padding-top:24px;
@@ -926,11 +927,11 @@ footer ul li a:hover{color:var(--gold-lt);}
       <div class="contact-lede rv">
         <h3 style="margin-bottom:18px;" id="contactHeading"></h3>
         <p id="contactIntro"></p>
-        <div class="cd-item"><div class="cd-icon">📞</div><div class="cd-text"><strong>Phone</strong><span id="cdPhone"></span></div></div>
-        <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong>Email</strong><span id="cdEmail"></span></div></div>
+        <div class="cd-item"><div class="cd-icon">📞</div><div class="cd-text"><strong>Phone</strong><a id="cdPhone" href="#"></a></div></div>
+        <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong>Email</strong><a id="cdEmail" href="#"></a></div></div>
         <div class="cd-item"><div class="cd-icon">💼</div><div class="cd-text"><strong>LinkedIn</strong><a id="cdLinkedIn" href="#" target="_blank" rel="noopener"></a></div></div>
         <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong>Location</strong><span id="cdLocation"></span></div></div>
-        <div class="cd-item"><div class="cd-icon">🌐</div><div class="cd-text"><strong>Website</strong><span id="cdWebsite"></span></div></div>
+        <div class="cd-item"><div class="cd-icon">🌐</div><div class="cd-text"><strong>Website</strong><a id="cdWebsite" href="#" target="_blank" rel="noopener"></a></div></div>
       </div>
       <form class="contact-form-wrap rv rv-d1" id="contactForm">
         <div class="form-duo">
@@ -975,10 +976,10 @@ footer ul li a:hover{color:var(--gold-lt);}
       </div>
       <div class="foot-contact-items">
         <h5>Contact</h5>
-        <div class="fi"><span id="footPhone"></span></div>
-        <div class="fi"><span id="footEmail"></span></div>
+        <div class="fi"><a id="footPhone" href="#"></a></div>
+        <div class="fi"><a id="footEmail" href="#"></a></div>
         <div class="fi"><span id="footLoc"></span></div>
-        <div class="fi"><span id="footWeb"></span></div>
+        <div class="fi"><a id="footWeb" href="#" target="_blank" rel="noopener"></a></div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1827,11 +1828,11 @@ function renderContact() {
   const c = DATA.contact;
   $('#contactHeading').innerHTML = esc(c.heading);
   $('#contactIntro').innerHTML = esc(c.intro);
-  $('#cdPhone').textContent = c.phone;
-  $('#cdEmail').textContent = c.email;
+  const ph = $('#cdPhone'); ph.href = 'tel:' + c.phone.replace(/\s+/g, ''); ph.textContent = c.phone;
+  const em = $('#cdEmail'); em.href = 'mailto:' + c.email; em.textContent = c.email;
   const ln = $('#cdLinkedIn'); ln.href = c.linkedin; ln.textContent = c.linkedinLabel;
   $('#cdLocation').textContent = c.location;
-  $('#cdWebsite').textContent = c.website;
+  const wb = $('#cdWebsite'); wb.href = c.website.match(/^https?:\/\//) ? c.website : 'https://' + c.website; wb.textContent = c.website;
   $('#sv').innerHTML = '<option value="">Select a service...</option>' + c.services.map(s => `<option>${esc(s)}</option>`).join('');
   const form = $('#contactForm');
   form.action = 'https://formspree.io/f/xgobjbyy';
@@ -1843,10 +1844,10 @@ function renderFooter() {
   $('#footName').textContent = DATA.nav.name;
   $('#footDomain').textContent = DATA.meta.domain;
   $('#footBlurb').innerHTML = esc(f.blurb);
-  $('#footPhone').textContent = '📞 ' + DATA.contact.phone;
-  $('#footEmail').textContent = '✉️ ' + DATA.contact.email;
+  const fp = $('#footPhone'); fp.href = 'tel:' + DATA.contact.phone.replace(/\s+/g, ''); fp.textContent = '📞 ' + DATA.contact.phone;
+  const fe = $('#footEmail'); fe.href = 'mailto:' + DATA.contact.email; fe.textContent = '✉️ ' + DATA.contact.email;
   $('#footLoc').textContent = '📍 ' + DATA.contact.location;
-  $('#footWeb').textContent = '🌐 ' + DATA.contact.website;
+  const fw = $('#footWeb'); fw.href = DATA.contact.website.match(/^https?:\/\//) ? DATA.contact.website : 'https://' + DATA.contact.website; fw.textContent = '🌐 ' + DATA.contact.website;
   $('#footCopyYear').textContent = f.year;
   $('#footCopyName').textContent = DATA.nav.name;
   $('#footBottomLine').innerHTML = esc(f.bottomLine);

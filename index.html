@@ -999,7 +999,7 @@ footer ul li a:hover{color:var(--gold-lt);}
     "keywords": "Sures Guragai, CA Nepal, Finance Professional, Audit, Bookkeeping, VAT, TDS, Financial Reporting",
     "author": "Sures Guragai",
     "domain": "suresguragai.com.np",
-    "formspreeId": ""
+    "formspreeId": "xgobjbyy"
   },
   "nav": {
     "name": "Sures Guragai",
@@ -1834,10 +1834,9 @@ function renderContact() {
   $('#cdWebsite').textContent = c.website;
   $('#sv').innerHTML = '<option value="">Select a service...</option>' + c.services.map(s => `<option>${esc(s)}</option>`).join('');
   const form = $('#contactForm');
-const form = $('#contactForm');
-form.action = 'https://formspree.io/f/xgobjbyy';
-form.method = 'POST';
-$('#contactSubmit').textContent = 'Send Message';
+  form.action = 'https://formspree.io/f/xgobjbyy';
+  form.method = 'POST';
+  $('#contactSubmit').textContent = 'Send Message';
 }
 function renderFooter() {
   const f = DATA.footer;

@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Sures Guragai — Finance & Audit Professional",
-    "description": "Sures Guragai – Semi-Qualified CA. Finance & Audit Professional offering accounting, bookkeeping, audit support, and taxation services in Nepal.",
-    "keywords": "Sures Guragai, CA Nepal, Finance Professional, Audit, Bookkeeping, VAT, TDS, Financial Reporting",
+    "description": "Sures Guragai – CA Finalist (ICAI). Finance & audit professional offering accounting, bookkeeping, audit support, and taxation services in Nepal.",
+    "keywords": "Sures Guragai, CA Finalist Nepal, finance professional Kathmandu, audit support, bookkeeping Nepal, VAT TDS consultant, financial reporting",
     "author": "Sures Guragai",
     "domain": "suresguragai.com.np",
     "formspreeId": ""
@@ -12,7 +12,7 @@
     "tagline": "suresguragai.com.np"
   },
   "hero": {
-    "badge": "Finance & Audit Professional · Semi-Qualified CA",
+    "badge": "Finance & Audit Professional · CA Finalist (ICAI)",
     "headingLine1": "Precision in",
     "headingLine2": "every ledger.",
     "desc": "Seven years across statutory audit, reconciliation, bookkeeping, and taxation — in Nepal and India. Currently Finance Solutions Officer at Nepal Works. CA Final Group I cleared, January 2026.",
@@ -62,8 +62,8 @@
       "Bookkeeping",
       "Internal Controls",
       "Commission Validation",
-      "Commission Validation",
-      "Analytical Thinking"
+      "Analytical Thinking",
+      "Tax Compliance"
     ],
     "facts": [
       {
@@ -92,7 +92,7 @@
       },
       {
         "key": "Contact",
-        "val": "+977 9848273802<br>Sureshguragain10@gmail.com"
+        "val": "+977 9848273802<br>sureshguragain10@gmail.com"
       }
     ]
   },
@@ -328,7 +328,6 @@
         "Income Tax",
         "GST Filing",
         "Tax Audit Support",
-        "",
         "ROC Filings",
         "Companies Act",
         "Scrutiny Matters"
@@ -429,24 +428,24 @@
       "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
       "name": "Niroj Shrestha",
       "role": "Nepal Works · Finance Team",
-      "avatar": "C"
+      "avatar": "N"
     },
     {
       "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
       "name": "Pawan Sigdel",
       "role": "Audit Client · Kathmandu",
-      "avatar": "A"
+      "avatar": "P"
     },
     {
       "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
       "name": "Anil Nepal",
       "role": "SME Client · Nepal",
-      "avatar": "B"
+      "avatar": "A"
     }
   ],
   "contact": {
     "heading": "Let's work together",
-    "intro": "Available for freelance engagements, consulting work, and full-time opportunities. Reach out via the form or directly using the details below.",
+    "intro": "Available for freelance and consulting engagements in bookkeeping, VAT/TDS, audit support, and financial reporting — and open to full-time roles. Reach out via the form or the details below; I typically reply within one business day.",
     "phone": "+977 9848273802",
     "email": "sureshguragain10@gmail.com",
     "linkedin": "https://www.linkedin.com/in/sures-guragai11/",
@@ -455,18 +454,18 @@
     "website": "suresguragai.com.np",
     "services": [
       "Accounting & Bookkeeping",
-      "Taxation Support ( VAT/TDS)",
+      "Taxation Support (VAT/TDS)",
       "Audit Support",
-      "Fincial Reporting",
+      "Financial Reporting",
       "Internal Control Support",
-      "Commision Calculation",
-      "Business  Advisory",
+      "Commission Calculation",
+      "Business Advisory",
       "General Enquiry"
     ]
   },
   "footer": {
-    "blurb": "Finance and audit professional. Semi-Qualified CA (ICAI) with 7+ years of experience in accounting, bookkeeping, audit, and taxation across Nepal and India.",
-    "bottomLine": "Finance & Audit Professional · Semi-Qualified CA · Kathmandu, Nepal",
+    "blurb": "Finance and audit professional. CA Finalist (ICAI) with 7+ years of experience in accounting, bookkeeping, audit support, and taxation across Nepal and India.",
+    "bottomLine": "Finance & Audit Professional · CA Finalist (ICAI) · Kathmandu, Nepal",
     "year": "2026"
   }
 }

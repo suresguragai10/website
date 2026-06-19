@@ -121,70 +121,70 @@
       "title": "Audit Support",
       "desc": "Thorough audit assistance from planning to reporting, across multiple industries.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Statutory audit support",
+        "Internal audit assignments",
+        "Vouching & verification",
+        "Audit working paper preparation"
       ]
     },
     {
       "title": "Financial Reporting",
       "desc": "Clear financial statements and reports for informed stakeholder decision-making.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Balance sheet & P&L preparation",
+        "Provisional financial statements",
+        "Financial data accuracy review",
+        "Management reporting support"
       ]
     },
     {
       "title": "Compliance & Regulatory",
       "desc": "Helping organisations meet statutory obligations and avoid compliance risk.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "ROC annual return filings",
+        "Companies Act compliance",
+        "Director appointment filings",
+        "DIN applications & incorporation"
       ]
     },
     {
       "title": "Internal Control Support",
       "desc": "Identifying gaps and strengthening controls to protect your organisation's assets.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Control environment assessment",
+        "Process review & documentation",
+        "Discrepancy identification",
+        "Reconciliation oversight"
       ]
     },
     {
       "title": "Financial Analysis & Budgeting",
       "desc": "Analytical support to plan, forecast, and evaluate financial performance.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Cost sheet preparation",
+        "Budget preparation support",
+        "Variance & trend analysis",
+        "Financial data management"
       ]
     },
     {
       "title": "Commission Calculation",
       "desc": "Accurate commission validation and reconciliation for complex payout structures.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Commission structure review",
+        "Data validation & cross-checking",
+        "Discrepancy resolution",
+        "Reconciliation reporting"
       ]
     },
     {
       "title": "Business Advisory",
       "desc": "Practical financial guidance for start-ups and SMEs building sound foundations.",
       "items": [
-        "",
-        "",
-        "",
-        ""
+        "Company incorporation support",
+        "Financial record setup",
+        "Bank empanelment support",
+        "Scrutiny & refund matter support"
       ]
     }
   ],
@@ -194,10 +194,10 @@
       "title": "Finance Solutions Officer",
       "company": "Nepal Works · Kathmandu, Nepal",
       "bullets": [
-        "",
-        "",
-        "",
-        ""
+        "Handle commission calculation and validation to support accurate and timely financial processing.",
+        "Monitor ledgers and financial records to identify discrepancies and maintain data accuracy.",
+        "Manage financial data requirements and support timely reconciliation across operational workflows.",
+        "Strengthen day-to-day control and reporting discipline across finance operations."
       ]
     },
     {
@@ -205,10 +205,10 @@
       "title": "Assistant Auditor",
       "company": "Trust Haven Professional · Lazimpat, Kathmandu, Nepal",
       "bullets": [
-        "",
-        "",
-        "",
-        ""
+        "Performed statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors.",
+        "Prepared VAT and TDS returns; supported accounting, bookkeeping, and cost sheet preparation.",
+        "Contributed to internal audit engagements and company incorporation support work.",
+        "Key clients: Paragon Engineering, Center for Autism, Kantipur Job Solution, Pork Hub Restaurant, Haleshi Securities."
       ]
     },
     {
@@ -216,9 +216,9 @@
       "title": "Articled Audit Assistant",
       "company": "Gaur & Company · Laxmi Nagar, New Delhi, India",
       "bullets": [
-        "",
-        "",
-        ""
+        "Supported statutory, management, and operational audits for banks, hospitals, automobile dealerships, and electronics businesses.",
+        "Handled vouching and verification, audit of statutory liabilities, and account finalisation support.",
+        "Reviewed loans and advances; checked NPA-related records in banking audit assignments."
       ]
     },
     {
@@ -226,8 +226,8 @@
       "title": "Articled Audit Assistant",
       "company": "M. Sippy & Associates · Sector 16, Noida, Uttar Pradesh, India",
       "bullets": [
-        "",
-        ""
+        "Assisted with GST and TDS return filing, tax audit support, and compliance documentation.",
+        "Provided support for bookkeeping, account finalisation, and client audit assignments."
       ]
     }
   ],
@@ -309,15 +309,15 @@
     {
       "label": "Finance & Audit",
       "tags": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Commission Calculation",
+        "Reconciliation",
+        "General Ledger Review",
+        "Vouching & Verification",
+        "Statutory Audit",
+        "Internal Audit",
+        "Bank Audit",
+        "NPA Review",
+        "Account Finalisation"
       ]
     },
     {

@@ -1834,13 +1834,10 @@ function renderContact() {
   $('#cdWebsite').textContent = c.website;
   $('#sv').innerHTML = '<option value="">Select a service...</option>' + c.services.map(s => `<option>${esc(s)}</option>`).join('');
   const form = $('#contactForm');
-  if (DATA.meta.formspreeId) {
-    form.action = 'https://formspree.io/f/xgobjbyy' + DATA.meta.formspreeId;
-    form.method = 'POST';
-    $('#contactSubmit').textContent = 'Send Message';
-  } else {
-    form.addEventListener('submit', e => { e.preventDefault(); alert('Contact form not yet connected. Add a Formspree ID in the content manager.'); });
-  }
+const form = $('#contactForm');
+form.action = 'https://formspree.io/f/xgobjbyy';
+form.method = 'POST';
+$('#contactSubmit').textContent = 'Send Message';
 }
 function renderFooter() {
   const f = DATA.footer;

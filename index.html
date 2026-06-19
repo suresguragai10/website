@@ -1835,7 +1835,7 @@ function renderContact() {
   $('#sv').innerHTML = '<option value="">Select a service...</option>' + c.services.map(s => `<option>${esc(s)}</option>`).join('');
   const form = $('#contactForm');
   if (DATA.meta.formspreeId) {
-    form.action = 'https://formspree.io/f/' + DATA.meta.formspreeId;
+    form.action = 'https://formspree.io/f/xgobjbyy' + DATA.meta.formspreeId;
     form.method = 'POST';
     $('#contactSubmit').textContent = 'Send Message';
   } else {

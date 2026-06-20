@@ -852,7 +852,6 @@ footer ul li a:hover{color:var(--gold-lt);}
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#blog">Blog</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact" class="nav-cta-link">Contact</a></li>
       </ul>
@@ -957,8 +956,8 @@ footer ul li a:hover{color:var(--gold-lt);}
   </div>
 </section>
 
-<!-- BLOG -->
-<section id="blog" class="sec sec--parchment">
+<!-- BLOG (hidden) -->
+<section id="blog" class="sec sec--parchment" style="display:none;">
   <div class="wrap">
     <div class="rv" style="margin-bottom:56px;">
       <span class="sec-label">Insights</span>
@@ -1037,7 +1036,6 @@ footer ul li a:hover{color:var(--gold-lt);}
       <div>
         <h5>More</h5>
         <ul>
-          <li><a href="#blog">Blog</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1797,7 +1795,7 @@ function normalize(d) {
 function render() {
   renderMeta(); renderNav(); renderHero(); renderTrust(); renderAbout();
   renderServices(); renderExperience(); renderEducation(); renderSkills();
-  renderTraining(); renderBlog(); renderTestimonials(); renderContact(); renderFooter();
+  renderTraining(); renderTestimonials(); renderContact(); renderFooter();
   observeReveal();
 }
 
@@ -1906,6 +1904,34 @@ function renderContact() {
   form.action = 'https://formspree.io/f/xgobjbyy';
   form.method = 'POST';
   $('#contactSubmit').textContent = 'Send Message';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('#contactSubmit');
+    const original = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.innerHTML = '<div style="text-align:center;padding:32px 8px;">'
+          + '<div style="font-size:2.4rem;margin-bottom:14px;color:var(--gold);">✓</div>'
+          + '<h3 style="margin-bottom:10px;">Thank you!</h3>'
+          + '<p style="font-size:.92rem;">Your message has been sent. I\'ll get back to you as soon as possible.</p>'
+          + '</div>';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      btn.textContent = original;
+      btn.disabled = false;
+      alert('Sorry, something went wrong. Please email Sureshguragain10@gmail.com directly.');
+    }
+  });
 }
 function renderFooter() {
   const f = DATA.footer;

@@ -2,10 +2,10 @@
   "meta": {
     "title": "Sures Guragai — Finance & Audit Professional",
     "description": "Sures Guragai – CA Finalist (ICAI). Finance & audit professional offering accounting, bookkeeping, audit support, and taxation services in Nepal.",
-    "keywords": "Sures Guragai, CA Finalist Nepal, finance professional Kathmandu, audit support, bookkeeping Nepal, VAT TDS consultant, financial reporting",
+    "keywords": "Sures Guragai, CA Nepal, Finance Professional, Audit, Bookkeeping, VAT, TDS, Financial Reporting",
     "author": "Sures Guragai",
     "domain": "suresguragai.com.np",
-    "formspreeId": ""
+    "formspreeId": "xgobjbyy"
   },
   "nav": {
     "name": "Sures Guragai",
@@ -16,12 +16,12 @@
     "headingLine1": "Precision in",
     "headingLine2": "every ledger.",
     "desc": "Seven years across statutory audit, reconciliation, bookkeeping, and taxation — in Nepal and India. Currently Finance Solutions Officer at Nepal Works. CA Final Group I cleared, January 2026.",
-    "cvUrl": "/suresh-guragai-cv.pdf",
+    "cvUrl": "",
     "credentials": [
       {
         "label": "CA Status",
         "value": "Final<br>Group I Passed",
-        "sub": ""
+        "sub": "ICAI · January 2026"
       },
       {
         "label": "Experience",
@@ -41,29 +41,63 @@
     ]
   },
   "trust": [
-    "ICAI — CPT & IPCC Groups I & II Passed",
-    "CA Final Group I Passed",
-    "Statutory & Internal Audit Experience",
-    "VAT · TDS · Financial Reconciliation",
-    "Nepal & India Practice Background"
+    {
+      "text": "ICAI — CPT & IPCC Groups I & II Passed"
+    },
+    {
+      "text": "CA Final Group I Passed · Jan 2026"
+    },
+    {
+      "text": "Statutory & Internal Audit Experience"
+    },
+    {
+      "text": "VAT · TDS · Financial Reconciliation"
+    },
+    {
+      "text": "Nepal & India Practice Background"
+    }
   ],
   "about": {
     "heading": "A finance professional who gets the details right",
     "paragraphs": [
-      "I am Sures Guragai, a finance and audit professional based in Kathmandu. My CA journey began in 2016 as an Articled Audit Assistant in India, and over the past seven years I have built hands-on experience across statutory audit, internal audit, bookkeeping, VAT & TDS compliance, and financial reconciliation.",
-      "I currently serve as Finance Solutions Officer at Nepal Works, where I manage commission calculations, ledger monitoring, data accuracy controls, and day-to-day reconciliation workflows. Prior to this I spent over two years at Trust Haven Professional in Kathmandu performing statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors.",
-      "My early training across firms in New Delhi and Noida gave me strong foundations in bank audits, NPA review, income tax compliance, and company incorporation matters. Alongside professional work I am concurrently pursuing an MBS and LLB to deepen my understanding of business and legal frameworks.",
-      "I bring a disciplined, detail-oriented approach to every engagement — whether ensuring a ledger reconciles to the last rupee or structuring clean financial records for an audit."
+      {
+        "text": "I am <strong>Sures Guragai</strong>, a finance and audit professional based in Kathmandu. My CA journey began in 2016 as an Articled Audit Assistant in India, and over the past seven years I have built hands-on experience across statutory audit, internal audit, bookkeeping, VAT & TDS compliance, and financial reconciliation."
+      },
+      {
+        "text": "I currently serve as <strong>Finance Solutions Officer at Nepal Works</strong>, where I manage commission calculations, ledger monitoring, data accuracy controls, and day-to-day reconciliation workflows. Prior to this I spent over two years at Trust Haven Professional in Kathmandu performing statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors."
+      },
+      {
+        "text": "My early training across firms in New Delhi and Noida gave me strong foundations in bank audits, NPA review, income tax compliance, and company incorporation matters. Alongside professional work I am concurrently pursuing an MBS and LLB to deepen my understanding of business and legal frameworks."
+      },
+      {
+        "text": "I bring a disciplined, detail-oriented approach to every engagement — whether ensuring a ledger reconciles to the last rupee or structuring clean financial records for an audit."
+      }
     ],
     "strengths": [
-      "Audit & Compliance",
-      "Financial Reconciliation",
-      "VAT & TDS Returns",
-      "Bookkeeping",
-      "Internal Controls",
-      "Commission Validation",
-      "Analytical Thinking",
-      "Tax Compliance"
+      {
+        "text": "Audit & Compliance"
+      },
+      {
+        "text": "Financial Reconciliation"
+      },
+      {
+        "text": "VAT & TDS Returns"
+      },
+      {
+        "text": "Bookkeeping"
+      },
+      {
+        "text": "Internal Controls"
+      },
+      {
+        "text": "Commission Validation"
+      },
+      {
+        "text": "Reporting Support"
+      },
+      {
+        "text": "Analytical Thinking"
+      }
     ],
     "facts": [
       {
@@ -92,7 +126,7 @@
       },
       {
         "key": "Contact",
-        "val": "+977 9848273802<br>sureshguragain10@gmail.com"
+        "val": "+977 9848273802<br>Sureshguragain10@gmail.com"
       }
     ]
   },
@@ -101,90 +135,168 @@
       "title": "Accounting & Bookkeeping",
       "desc": "Accurate, well-organised records that keep your business in control and audit-ready.",
       "items": [
-        "General ledger maintenance",
-        "Bank & account reconciliation",
-        "Day-to-day transaction recording",
-        "Month-end and year-end closing"
+        {
+          "text": "General ledger maintenance"
+        },
+        {
+          "text": "Bank & account reconciliation"
+        },
+        {
+          "text": "Day-to-day transaction recording"
+        },
+        {
+          "text": "Month-end and year-end closing"
+        }
       ]
     },
     {
       "title": "Taxation Support",
-      "desc": "Timely preparation and filing of tax returns to keep your business compliant.",
+      "desc": "End-to-end tax compliance for individuals and businesses — from return filing to obtaining your tax clearance certificate.",
       "items": [
-        "VAT return preparation & filing",
-        "TDS return preparation & filing",
-        "Income tax compliance support",
-        "Tax audit documentation"
+        {
+          "text": "Income tax return filing (individuals & businesses)"
+        },
+        {
+          "text": "VAT return preparation & filing"
+        },
+        {
+          "text": "TDS return preparation & filing"
+        },
+        {
+          "text": "Tax Clearance Certificate assistance"
+        },
+        {
+          "text": "Tax assessment & compliance support"
+        },
+        {
+          "text": "Tax audit documentation"
+        }
       ]
     },
     {
       "title": "Audit Support",
       "desc": "Thorough audit assistance from planning to reporting, across multiple industries.",
       "items": [
-        "Statutory audit support",
-        "Internal audit assignments",
-        "Vouching & verification",
-        "Audit working paper preparation"
+        {
+          "text": "Statutory audit support"
+        },
+        {
+          "text": "Internal audit assignments"
+        },
+        {
+          "text": "Vouching & verification"
+        },
+        {
+          "text": "Audit working paper preparation"
+        }
       ]
     },
     {
       "title": "Financial Reporting",
       "desc": "Clear financial statements and reports for informed stakeholder decision-making.",
       "items": [
-        "Balance sheet & P&L preparation",
-        "Provisional financial statements",
-        "Financial data accuracy review",
-        "Management reporting support"
+        {
+          "text": "Balance sheet & P&L preparation"
+        },
+        {
+          "text": "Provisional financial statements"
+        },
+        {
+          "text": "Financial data accuracy review"
+        },
+        {
+          "text": "Management reporting support"
+        }
       ]
     },
     {
       "title": "Compliance & Regulatory",
       "desc": "Helping organisations meet statutory obligations and avoid compliance risk.",
       "items": [
-        "ROC annual return filings",
-        "Companies Act compliance",
-        "Director appointment filings",
-        "DIN applications & incorporation"
+        {
+          "text": "ROC annual return filings"
+        },
+        {
+          "text": "Companies Act compliance"
+        },
+        {
+          "text": "Director appointment filings"
+        },
+        {
+          "text": "DIN applications & incorporation"
+        }
       ]
     },
     {
       "title": "Internal Control Support",
       "desc": "Identifying gaps and strengthening controls to protect your organisation's assets.",
       "items": [
-        "Control environment assessment",
-        "Process review & documentation",
-        "Discrepancy identification",
-        "Reconciliation oversight"
+        {
+          "text": "Control environment assessment"
+        },
+        {
+          "text": "Process review & documentation"
+        },
+        {
+          "text": "Discrepancy identification"
+        },
+        {
+          "text": "Reconciliation oversight"
+        }
       ]
     },
     {
       "title": "Financial Analysis & Budgeting",
       "desc": "Analytical support to plan, forecast, and evaluate financial performance.",
       "items": [
-        "Cost sheet preparation",
-        "Budget preparation support",
-        "Variance & trend analysis",
-        "Financial data management"
+        {
+          "text": "Cost sheet preparation"
+        },
+        {
+          "text": "Budget preparation support"
+        },
+        {
+          "text": "Variance & trend analysis"
+        },
+        {
+          "text": "Financial data management"
+        }
       ]
     },
     {
       "title": "Commission Calculation",
       "desc": "Accurate commission validation and reconciliation for complex payout structures.",
       "items": [
-        "Commission structure review",
-        "Data validation & cross-checking",
-        "Discrepancy resolution",
-        "Reconciliation reporting"
+        {
+          "text": "Commission structure review"
+        },
+        {
+          "text": "Data validation & cross-checking"
+        },
+        {
+          "text": "Discrepancy resolution"
+        },
+        {
+          "text": "Reconciliation reporting"
+        }
       ]
     },
     {
       "title": "Business Advisory",
       "desc": "Practical financial guidance for start-ups and SMEs building sound foundations.",
       "items": [
-        "Company incorporation support",
-        "Financial record setup",
-        "Bank empanelment support",
-        "Scrutiny & refund matter support"
+        {
+          "text": "Company incorporation support"
+        },
+        {
+          "text": "Financial record setup"
+        },
+        {
+          "text": "Bank empanelment support"
+        },
+        {
+          "text": "Scrutiny & refund matter support"
+        }
       ]
     }
   ],
@@ -194,10 +306,18 @@
       "title": "Finance Solutions Officer",
       "company": "Nepal Works · Kathmandu, Nepal",
       "bullets": [
-        "Handle commission calculation and validation to support accurate and timely financial processing.",
-        "Monitor ledgers and financial records to identify discrepancies and maintain data accuracy.",
-        "Manage financial data requirements and support timely reconciliation across operational workflows.",
-        "Strengthen day-to-day control and reporting discipline across finance operations."
+        {
+          "text": "Handle commission calculation and validation to support accurate and timely financial processing."
+        },
+        {
+          "text": "Monitor ledgers and financial records to identify discrepancies and maintain data accuracy."
+        },
+        {
+          "text": "Manage financial data requirements and support timely reconciliation across operational workflows."
+        },
+        {
+          "text": "Strengthen day-to-day control and reporting discipline across finance operations."
+        }
       ]
     },
     {
@@ -205,10 +325,18 @@
       "title": "Assistant Auditor",
       "company": "Trust Haven Professional · Lazimpat, Kathmandu, Nepal",
       "bullets": [
-        "Performed statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors.",
-        "Prepared VAT and TDS returns; supported accounting, bookkeeping, and cost sheet preparation.",
-        "Contributed to internal audit engagements and company incorporation support work.",
-        "Key clients: Paragon Engineering, Center for Autism, Kantipur Job Solution, Pork Hub Restaurant, Haleshi Securities."
+        {
+          "text": "Performed statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors."
+        },
+        {
+          "text": "Prepared VAT and TDS returns; supported accounting, bookkeeping, and cost sheet preparation."
+        },
+        {
+          "text": "Contributed to internal audit engagements and company incorporation support work."
+        },
+        {
+          "text": "Key clients: Paragon Engineering, Center for Autism, Kantipur Job Solution, Pork Hub Restaurant, Haleshi Securities."
+        }
       ]
     },
     {
@@ -216,9 +344,15 @@
       "title": "Articled Audit Assistant",
       "company": "Gaur & Company · Laxmi Nagar, New Delhi, India",
       "bullets": [
-        "Supported statutory, management, and operational audits for banks, hospitals, automobile dealerships, and electronics businesses.",
-        "Handled vouching and verification, audit of statutory liabilities, and account finalisation support.",
-        "Reviewed loans and advances; checked NPA-related records in banking audit assignments."
+        {
+          "text": "Supported statutory, management, and operational audits for banks, hospitals, automobile dealerships, and electronics businesses."
+        },
+        {
+          "text": "Handled vouching and verification, audit of statutory liabilities, and account finalisation support."
+        },
+        {
+          "text": "Reviewed loans and advances; checked NPA-related records in banking audit assignments."
+        }
       ]
     },
     {
@@ -226,8 +360,12 @@
       "title": "Articled Audit Assistant",
       "company": "M. Sippy & Associates · Sector 16, Noida, Uttar Pradesh, India",
       "bullets": [
-        "Assisted with GST and TDS return filing, tax audit support, and compliance documentation.",
-        "Provided support for bookkeeping, account finalisation, and client audit assignments."
+        {
+          "text": "Assisted with GST and TDS return filing, tax audit support, and compliance documentation."
+        },
+        {
+          "text": "Provided support for bookkeeping, account finalisation, and client audit assignments."
+        }
       ]
     }
   ],
@@ -236,7 +374,7 @@
       "tag": "CA — ICAI",
       "title": "CA Final · Group I",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "",
+      "yr": "January 2026",
       "status": "Passed",
       "statusType": "pass",
       "status2": "Group II — Ongoing"
@@ -245,19 +383,17 @@
       "tag": "CA — ICAI",
       "title": "IPCC · Groups I & II",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "",
+      "yr": "Nov 2016 & Nov 2018",
       "status": "Both Groups Passed",
-      "statusType": "pass",
-      "status2": ""
+      "statusType": "pass"
     },
     {
       "tag": "CA — ICAI",
       "title": "CPT",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "",
+      "yr": "December 2013",
       "status": "Passed",
-      "statusType": "pass",
-      "status2": ""
+      "statusType": "pass"
     },
     {
       "tag": "Postgraduate",
@@ -265,8 +401,7 @@
       "inst": "Currently Pursuing",
       "yr": "Ongoing",
       "status": "In Progress",
-      "statusType": "on",
-      "status2": ""
+      "statusType": "on"
     },
     {
       "tag": "Law",
@@ -274,26 +409,23 @@
       "inst": "Currently Pursuing",
       "yr": "Ongoing",
       "status": "In Progress",
-      "statusType": "on",
-      "status2": ""
+      "statusType": "on"
     },
     {
       "tag": "Undergraduate",
       "title": "B.Com · Accounting & Finance",
       "inst": "Indira Gandhi National Open University (IGNOU)",
-      "yr": "",
+      "yr": "Completed 2024",
       "status": "Completed",
-      "statusType": "pass",
-      "status2": ""
+      "statusType": "pass"
     },
     {
       "tag": "Higher Secondary",
       "title": "+2 Management (HSEB)",
       "inst": "College for Higher Education, Birtamod, Jhapa",
-      "yr": "",
+      "yr": "2011 – 2013",
       "status": "Completed",
-      "statusType": "pass",
-      "status2": ""
+      "statusType": "pass"
     },
     {
       "tag": "High School",
@@ -301,80 +433,164 @@
       "inst": "Government of Nepal",
       "yr": "2010",
       "status": "Completed",
-      "statusType": "pass",
-      "status2": ""
+      "statusType": "pass"
     }
   ],
   "skills": [
     {
       "label": "Finance & Audit",
       "tags": [
-        "Commission Calculation",
-        "Reconciliation",
-        "General Ledger Review",
-        "Vouching & Verification",
-        "Statutory Audit",
-        "Internal Audit",
-        "Bank Audit",
-        "NPA Review",
-        "Account Finalisation"
+        {
+          "text": "Commission Calculation"
+        },
+        {
+          "text": "Reconciliation"
+        },
+        {
+          "text": "General Ledger Review"
+        },
+        {
+          "text": "Vouching & Verification"
+        },
+        {
+          "text": "Statutory Audit"
+        },
+        {
+          "text": "Internal Audit"
+        },
+        {
+          "text": "Bank Audit"
+        },
+        {
+          "text": "NPA Review"
+        },
+        {
+          "text": "Account Finalisation"
+        }
       ]
     },
     {
       "label": "Taxation & Compliance",
       "tags": [
-        "VAT Returns",
-        "TDS Returns",
-        "Income Tax",
-        "GST Filing",
-        "Tax Audit Support",
-        "ROC Filings",
-        "Companies Act",
-        "Scrutiny Matters"
+        {
+          "text": "VAT Returns"
+        },
+        {
+          "text": "TDS Returns"
+        },
+        {
+          "text": "Income Tax"
+        },
+        {
+          "text": "GST Filing"
+        },
+        {
+          "text": "Tax Audit Support"
+        },
+        {
+          "text": "ROC Filings"
+        },
+        {
+          "text": "Companies Act"
+        },
+        {
+          "text": "Scrutiny Matters"
+        },
+        {
+          "text": "DIN Applications"
+        }
       ]
     },
     {
       "label": "Reporting & Documentation",
       "tags": [
-        "Financial Statements",
-        "Provisional Balance Sheets",
-        "Cost Sheet Preparation",
-        "Audit Working Papers",
-        "Management Reports",
-        "Compliance Docs"
+        {
+          "text": "Financial Statements"
+        },
+        {
+          "text": "Provisional Balance Sheets"
+        },
+        {
+          "text": "Cost Sheet Preparation"
+        },
+        {
+          "text": "Audit Working Papers"
+        },
+        {
+          "text": "Management Reports"
+        },
+        {
+          "text": "Compliance Docs"
+        }
       ]
     },
     {
       "label": "Professional Strengths",
       "tags": [
-        "Analytical Problem Solving",
-        "Attention to Detail",
-        "Stakeholder Communication",
-        "Cross-functional Collaboration",
-        "Process Improvement",
-        "Decision Making"
+        {
+          "text": "Analytical Problem Solving"
+        },
+        {
+          "text": "Attention to Detail"
+        },
+        {
+          "text": "Stakeholder Communication"
+        },
+        {
+          "text": "Cross-functional Collaboration"
+        },
+        {
+          "text": "Process Improvement"
+        },
+        {
+          "text": "Decision Making"
+        }
       ]
     },
     {
       "label": "Sector Experience",
       "tags": [
-        "Banking",
-        "Engineering",
-        "Securities",
-        "Non-profit / NGO",
-        "Restaurant & F&B",
-        "Hospital",
-        "Automobile",
-        "Electronics",
-        "Employment Services"
+        {
+          "text": "Banking"
+        },
+        {
+          "text": "Engineering"
+        },
+        {
+          "text": "Securities"
+        },
+        {
+          "text": "Non-profit / NGO"
+        },
+        {
+          "text": "Restaurant & F&B"
+        },
+        {
+          "text": "Hospital"
+        },
+        {
+          "text": "Automobile"
+        },
+        {
+          "text": "Electronics"
+        },
+        {
+          "text": "Employment Services"
+        }
       ]
     },
     {
       "label": "Languages",
       "tags": [
-        "Nepali (Native)",
-        "English (Professional)",
-        "Hindi (Proficient)"
+        {
+          "text": "Nepali (Native)"
+        },
+        {
+          "text": "English (Professional)"
+        },
+        {
+          "text": "Hindi (Proficient)"
+        }
       ]
     }
   ],
@@ -426,46 +642,65 @@
   "testimonials": [
     {
       "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
-      "name": "Niroj Shrestha",
+      "name": "[Colleague Name]",
       "role": "Nepal Works · Finance Team",
-      "avatar": "N"
+      "avatar": "C"
     },
     {
       "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
-      "name": "Pawan Sigdel",
+      "name": "[Client Name]",
       "role": "Audit Client · Kathmandu",
-      "avatar": "P"
+      "avatar": "A"
     },
     {
       "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
-      "name": "Anil Nepal",
+      "name": "[Business Owner Name]",
       "role": "SME Client · Nepal",
-      "avatar": "A"
+      "avatar": "B"
     }
   ],
   "contact": {
     "heading": "Let's work together",
-    "intro": "Available for freelance and consulting engagements in bookkeeping, VAT/TDS, audit support, and financial reporting — and open to full-time roles. Reach out via the form or the details below; I typically reply within one business day.",
+    "intro": "Available for freelance engagements, consulting work, and full-time opportunities. Reach out via the form or directly using the details below.",
     "phone": "+977 9848273802",
-    "email": "sureshguragain10@gmail.com",
+    "email": "Sureshguragain10@gmail.com",
     "linkedin": "https://www.linkedin.com/in/sures-guragai11/",
     "linkedinLabel": "linkedin.com/in/sures-guragai11",
     "location": "Kathmandu, Nepal",
     "website": "suresguragai.com.np",
     "services": [
-      "Accounting & Bookkeeping",
-      "Taxation Support (VAT/TDS)",
-      "Audit Support",
-      "Financial Reporting",
-      "Internal Control Support",
-      "Commission Calculation",
-      "Business Advisory",
-      "General Enquiry"
+      {
+        "text": "Accounting & Bookkeeping"
+      },
+      {
+        "text": "Taxation Support (VAT / TDS)"
+      },
+      {
+        "text": "Tax Filing & Tax Clearance"
+      },
+      {
+        "text": "Audit Support"
+      },
+      {
+        "text": "Financial Reporting"
+      },
+      {
+        "text": "Internal Control Support"
+      },
+      {
+        "text": "Commission Calculation"
+      },
+      {
+        "text": "Business Advisory"
+      },
+      {
+        "text": "General Enquiry"
+      }
     ]
   },
   "footer": {
     "blurb": "Finance and audit professional. CA Finalist (ICAI) with 7+ years of experience in accounting, bookkeeping, audit support, and taxation across Nepal and India.",
     "bottomLine": "Finance & Audit Professional · CA Finalist (ICAI) · Kathmandu, Nepal",
-    "year": "2026"
+    "year": "2025"
   }
 }

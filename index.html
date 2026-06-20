@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Sures Guragai — Finance &amp; Audit Professional</title>
 <meta name="description" content="Sures Guragai (Suresh Guragain) – CA Finalist (ICAI). Finance & audit professional in Kathmandu, Nepal offering accounting, bookkeeping, audit support, VAT/TDS, tax filing, tax clearance, and financial reporting. Free Nepal salary income tax calculator (FY 2082/83 & 2083/84)."/>
-<meta name="keywords" content="Sures Guragai, Suresh Guragain, Suresh Guragai, Suresh, CA Nepal, Chartered Accountant Nepal, Finance Professional Kathmandu, Audit, Bookkeeping, VAT, TDS, Tax Filing Nepal, Tax Clearance Nepal, Financial Reporting, Nepal salary tax calculator, Nepal income tax calculator, income tax Nepal 2082/83, income tax Nepal 2083/84, tax calculator Nepal"/>
+<meta name="keywords" content="Sures Guragai, Suresh Guragain, Suresh Guragai, Suresh, CA Nepal, Chartered Accountant Nepal, Finance Professional Kathmandu, Audit, Bookkeeping, VAT, TDS, Tax Filing Nepal, Tax Clearance Nepal, Financial Reporting, Nepal salary tax calculator, Nepal income tax calculator, income tax Nepal 2082/83, income tax Nepal 2083/84, VAT calculator Nepal, TDS calculator Nepal, EMI calculator Nepal, loan EMI calculator, tax calculator Nepal"/>
 <meta name="author" content="Sures Guragai"/>
 <link rel="canonical" href="https://suresguragai.com.np/"/>
 
@@ -76,11 +76,11 @@
     {
       "@type": "WebApplication",
       "@id": "https://suresguragai.com.np/#taxcalculator",
-      "name": "Nepal Salary Tax Calculator",
+      "name": "Nepal Financial Calculators",
       "url": "https://suresguragai.com.np/#taxcalc",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web browser",
-      "description": "Free Nepal salary income tax calculator for FY 2082/83 and FY 2083/84. Calculates annual and monthly income tax with SSF, EPF, CIT, and insurance deductions for individuals and couples.",
+      "description": "Free Nepal financial calculators: salary income tax (FY 2082/83 & 2083/84), VAT (13%), TDS by payment type, and loan EMI. Calculates tax with SSF, EPF, CIT, and insurance deductions.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NPR" },
       "creator": { "@id": "https://suresguragai.com.np/#person" }
     }
@@ -723,6 +723,26 @@ small{font-size:.78rem;}
 .btn-submit{width:100%;padding:15px;font-size:.88rem;}
 
 /* ============================================================
+   FINANCIAL TOOLS — tabs
+============================================================ */
+.tool-tabs{
+  display:flex;flex-wrap:wrap;gap:4px;margin-bottom:28px;
+  border-bottom:1px solid var(--rule);
+}
+.tool-tabs button{
+  font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;
+  letter-spacing:.02em;color:var(--muted);
+  background:transparent;border:none;cursor:pointer;
+  padding:12px 22px;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:color .2s,border-color .2s;
+}
+.tool-tabs button:hover{color:var(--ink);}
+.tool-tabs button.on{color:var(--ink);border-bottom-color:var(--gold);}
+.tool-panel{display:none;}
+.tool-panel.on{display:block;animation:toolFade .3s var(--ease);}
+@keyframes toolFade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+/* ============================================================
    TAX CALCULATOR
 ============================================================ */
 #taxcalc .calc-cols{
@@ -1003,92 +1023,223 @@ footer ul li a:hover{color:var(--gold-lt);}
   </div>
 </section>
 
-<!-- TAX CALCULATOR -->
+<!-- FINANCIAL TOOLS -->
 <section id="taxcalc" class="sec sec--white">
   <div class="wrap">
-    <div class="rv" style="margin-bottom:56px;">
-      <span class="sec-label">Free Tool</span>
-      <h2>Nepal Salary Tax Calculator</h2>
+    <div class="rv" style="margin-bottom:40px;">
+      <span class="sec-label">Free Tools</span>
+      <h2>Nepal Financial Calculators</h2>
       <div class="sec-rule"></div>
     </div>
-    <div class="calc-cols rv rv-d1">
-      <div class="calc-inputs">
-        <div class="calc-seg calc-seg--year" id="calcYear">
-          <button type="button" data-year="2082/83" class="on">FY 2082/83</button>
-          <button type="button" data-year="2083/84">FY 2083/84</button>
-        </div>
-        <div class="calc-seg" id="calcStatus">
-          <button type="button" data-status="single" class="on">Individual</button>
-          <button type="button" data-status="couple">Married Couple</button>
-        </div>
-        <p class="calc-merged-note" id="calcStatusNote" style="display:none;">FY 2083/84 applies one unified slab to all residents — the individual/couple distinction has been removed.</p>
-        <div class="calc-field">
-          <label for="calcMonthly">Monthly Salary (NPR)</label>
-          <input type="number" id="calcMonthly" inputmode="numeric" placeholder="e.g. 80000" min="0"/>
-        </div>
-        <div class="calc-field">
-          <label for="calcMonths">Months</label>
-          <input type="number" id="calcMonths" inputmode="numeric" value="12" min="1" max="13"/>
-          <div class="hint">Use 13 if you receive Dashain/festival bonus as an extra month.</div>
-        </div>
-        <div class="calc-field">
-          <label for="calcBonus">Annual Bonus / Other Income (NPR)</label>
-          <input type="number" id="calcBonus" inputmode="numeric" placeholder="0" min="0"/>
+
+    <div class="tool-tabs rv" id="toolTabs">
+      <button type="button" data-tool="income" class="on">Income Tax</button>
+      <button type="button" data-tool="vat">VAT</button>
+      <button type="button" data-tool="tds">TDS</button>
+      <button type="button" data-tool="emi">Loan EMI</button>
+    </div>
+
+    <!-- INCOME TAX TOOL -->
+    <div class="tool-panel on" data-panel="income">
+      <div class="calc-cols">
+        <div class="calc-inputs">
+          <div class="calc-seg calc-seg--year" id="calcYear">
+            <button type="button" data-year="2082/83" class="on">FY 2082/83</button>
+            <button type="button" data-year="2083/84">FY 2083/84</button>
+          </div>
+          <div class="calc-seg" id="calcStatus">
+            <button type="button" data-status="single" class="on">Individual</button>
+            <button type="button" data-status="couple">Married Couple</button>
+          </div>
+          <p class="calc-merged-note" id="calcStatusNote" style="display:none;">FY 2083/84 applies one unified slab to all residents — the individual/couple distinction has been removed.</p>
+          <div class="calc-field">
+            <label for="calcMonthly">Monthly Salary (NPR)</label>
+            <input type="number" id="calcMonthly" inputmode="numeric" placeholder="e.g. 80000" min="0"/>
+          </div>
+          <div class="calc-field">
+            <label for="calcMonths">Months</label>
+            <input type="number" id="calcMonths" inputmode="numeric" value="12" min="1" max="13"/>
+            <div class="hint">Use 13 if you receive Dashain/festival bonus as an extra month.</div>
+          </div>
+          <div class="calc-field">
+            <label for="calcBonus">Annual Bonus / Other Income (NPR)</label>
+            <input type="number" id="calcBonus" inputmode="numeric" placeholder="0" min="0"/>
+          </div>
+
+          <div class="calc-divider"></div>
+          <div class="calc-sub-label">Deductions</div>
+
+          <label class="calc-check">
+            <input type="checkbox" id="calcSSF"/>
+            <span class="cc-text">SSF contributor
+              <small>Waives the 1% social security tax on the first slab</small>
+            </span>
+          </label>
+          <div class="calc-field">
+            <label for="calcRetire">SSF / EPF / CIT — annual (NPR)</label>
+            <input type="number" id="calcRetire" inputmode="numeric" placeholder="0" min="0"/>
+            <div class="hint">Combined cap: NPR 5,00,000 or 1/3 of income, whichever is lower.</div>
+          </div>
+          <div class="calc-field">
+            <label for="calcLife">Life Insurance Premium — annual (NPR)</label>
+            <input type="number" id="calcLife" inputmode="numeric" placeholder="0" min="0"/>
+            <div class="hint">Capped at NPR 40,000.</div>
+          </div>
+          <div class="calc-field">
+            <label for="calcHealth">Health Insurance Premium — annual (NPR)</label>
+            <input type="number" id="calcHealth" inputmode="numeric" placeholder="0" min="0"/>
+            <div class="hint">Capped at NPR 20,000.</div>
+          </div>
         </div>
 
-        <div class="calc-divider"></div>
-        <div class="calc-sub-label">Deductions</div>
-
-        <label class="calc-check">
-          <input type="checkbox" id="calcSSF"/>
-          <span class="cc-text">SSF contributor
-            <small>Waives the 1% social security tax on the first slab</small>
-          </span>
-        </label>
-        <div class="calc-field">
-          <label for="calcRetire">SSF / EPF / CIT — annual (NPR)</label>
-          <input type="number" id="calcRetire" inputmode="numeric" placeholder="0" min="0"/>
-          <div class="hint">Combined cap: NPR 5,00,000 or 1/3 of income, whichever is lower.</div>
+        <div class="calc-results">
+          <span class="calc-fy" id="calcFyTag2">FY 2082/83 · 2025/26</span>
+          <div class="calc-headline">
+            <div class="ch-label">Total Annual Tax</div>
+            <div class="ch-val" id="calcTaxYear">NPR 0</div>
+            <div class="ch-sub" id="calcTaxMonth">NPR 0 / month</div>
+          </div>
+          <div class="calc-summary">
+            <div class="calc-srow"><span class="sl">Gross annual income</span><span class="sv" id="calcGross">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Total deductions</span><span class="sv" id="calcDeduct">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Taxable income</span><span class="sv" id="calcTaxable">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Effective tax rate</span><span class="sv" id="calcEffective">0%</span></div>
+            <div class="calc-srow net"><span class="sl">Net take-home / year</span><span class="sv" id="calcNet">NPR 0</span></div>
+          </div>
+          <div class="calc-slabs">
+            <table>
+              <thead><tr><th>Slab</th><th>Rate</th><th>Tax</th></tr></thead>
+              <tbody id="calcSlabBody"></tbody>
+            </table>
+          </div>
+          <p class="calc-disclaimer" id="calcDisclaimer">Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.</p>
+          <a href="#contact" class="btn btn-gold calc-cta">Need help with tax filing?</a>
         </div>
-        <div class="calc-field">
-          <label for="calcLife">Life Insurance Premium — annual (NPR)</label>
-          <input type="number" id="calcLife" inputmode="numeric" placeholder="0" min="0"/>
-          <div class="hint">Capped at NPR 40,000.</div>
-        </div>
-        <div class="calc-field">
-          <label for="calcHealth">Health Insurance Premium — annual (NPR)</label>
-          <input type="number" id="calcHealth" inputmode="numeric" placeholder="0" min="0"/>
-          <div class="hint">Capped at NPR 20,000.</div>
-        </div>
-      </div>
-
-      <div class="calc-results">
-        <span class="calc-fy" id="calcFyTag2">FY 2082/83 · 2025/26</span>
-        <div class="calc-headline">
-          <div class="ch-label">Total Annual Tax</div>
-          <div class="ch-val" id="calcTaxYear">NPR 0</div>
-          <div class="ch-sub" id="calcTaxMonth">NPR 0 / month</div>
-        </div>
-
-        <div class="calc-summary">
-          <div class="calc-srow"><span class="sl">Gross annual income</span><span class="sv" id="calcGross">NPR 0</span></div>
-          <div class="calc-srow"><span class="sl">Total deductions</span><span class="sv" id="calcDeduct">NPR 0</span></div>
-          <div class="calc-srow"><span class="sl">Taxable income</span><span class="sv" id="calcTaxable">NPR 0</span></div>
-          <div class="calc-srow"><span class="sl">Effective tax rate</span><span class="sv" id="calcEffective">0%</span></div>
-          <div class="calc-srow net"><span class="sl">Net take-home / year</span><span class="sv" id="calcNet">NPR 0</span></div>
-        </div>
-
-        <div class="calc-slabs">
-          <table>
-            <thead><tr><th>Slab</th><th>Rate</th><th>Tax</th></tr></thead>
-            <tbody id="calcSlabBody"></tbody>
-          </table>
-        </div>
-
-        <p class="calc-disclaimer" id="calcDisclaimer">Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.</p>
-        <a href="#contact" class="btn btn-gold calc-cta">Need help with tax filing?</a>
       </div>
     </div>
+
+    <!-- VAT TOOL -->
+    <div class="tool-panel" data-panel="vat">
+      <div class="calc-cols">
+        <div class="calc-inputs">
+          <div class="calc-sub-label">Sales (Output)</div>
+          <div class="calc-field">
+            <label for="vatSales">Taxable Sales — before VAT (NPR)</label>
+            <input type="number" id="vatSales" inputmode="numeric" placeholder="e.g. 500000" min="0"/>
+            <div class="hint">Your VAT-able sales for the period, excluding VAT.</div>
+          </div>
+
+          <div class="calc-divider"></div>
+          <div class="calc-sub-label">Purchases (Input)</div>
+          <div class="calc-field">
+            <label for="vatTaxablePur">Taxable Purchases — before VAT (NPR)</label>
+            <input type="number" id="vatTaxablePur" inputmode="numeric" placeholder="e.g. 300000" min="0"/>
+            <div class="hint">Purchases with VAT you can claim back as input credit.</div>
+          </div>
+          <div class="calc-field">
+            <label for="vatExemptPur">Non-Taxable / Exempt Purchases (NPR)</label>
+            <input type="number" id="vatExemptPur" inputmode="numeric" placeholder="0" min="0"/>
+            <div class="hint">Exempt or VAT-free purchases — no input credit applies.</div>
+          </div>
+
+          <div class="calc-divider"></div>
+          <div class="calc-field">
+            <label for="vatRate">VAT Rate (%)</label>
+            <input type="number" id="vatRate" inputmode="numeric" value="13" min="0" step="0.1"/>
+            <div class="hint">Standard Nepal VAT is 13%.</div>
+          </div>
+        </div>
+        <div class="calc-results">
+          <span class="calc-fy">VAT Return @ 13%</span>
+          <div class="calc-headline">
+            <div class="ch-label" id="vatNetLabel">Net VAT Payable</div>
+            <div class="ch-val" id="vatNet">NPR 0</div>
+            <div class="ch-sub" id="vatNetNote"></div>
+          </div>
+          <div class="calc-summary">
+            <div class="calc-srow"><span class="sl">Output VAT (on sales)</span><span class="sv" id="vatOutput">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Input VAT (on taxable purchases)</span><span class="sv" id="vatInput">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Non-taxable purchases</span><span class="sv" id="vatExemptOut">NPR 0</span></div>
+            <div class="calc-srow net"><span class="sl" id="vatNetRowLabel">Net VAT payable</span><span class="sv" id="vatNetRow">NPR 0</span></div>
+          </div>
+          <div class="calc-divider" style="background:rgba(255,255,255,.1);"></div>
+          <div class="calc-summary">
+            <div class="calc-srow"><span class="sl">Sales incl. VAT</span><span class="sv" id="vatSalesGross">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Taxable purchases incl. VAT</span><span class="sv" id="vatPurGross">NPR 0</span></div>
+          </div>
+          <p class="calc-disclaimer">Net VAT = Output VAT − Input VAT. A negative result is a creditable balance carried to the next period. Based on Nepal VAT Act 2052 (standard 13%); exemptions and partial credits may apply. For VAT registration or monthly filing, get in touch.</p>
+          <a href="#contact" class="btn btn-gold calc-cta">Need help with VAT filing?</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TDS TOOL -->
+    <div class="tool-panel" data-panel="tds">
+      <div class="calc-cols">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label for="tdsType">Payment Type</label>
+            <select id="tdsType"></select>
+            <div class="hint" id="tdsTypeNote"></div>
+          </div>
+          <div class="calc-field">
+            <label for="tdsAmount">Payment Amount, before VAT (NPR)</label>
+            <input type="number" id="tdsAmount" inputmode="numeric" placeholder="e.g. 100000" min="0"/>
+            <div class="hint">Enter the taxable/service amount only — TDS is never charged on the VAT portion of a bill.</div>
+          </div>
+        </div>
+        <div class="calc-results">
+          <span class="calc-fy">FY 2082/83 · TDS</span>
+          <div class="calc-headline">
+            <div class="ch-label">TDS to Withhold</div>
+            <div class="ch-val" id="tdsAmountOut">NPR 0</div>
+            <div class="ch-sub" id="tdsRateOut">Rate: 0%</div>
+          </div>
+          <div class="calc-summary">
+            <div class="calc-srow"><span class="sl">Gross payment</span><span class="sv" id="tdsGross">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">TDS deducted</span><span class="sv" id="tdsDeducted">NPR 0</span></div>
+            <div class="calc-srow net"><span class="sl">Net payable to payee</span><span class="sv" id="tdsNet">NPR 0</span></div>
+          </div>
+          <p class="calc-disclaimer">TDS rates per Income Tax Act 2058 / Finance Act 2082 (FY 2082/83). Rates vary by payee type and circumstances; some payments are final withholding. Verify before deducting. For e-TDS filing support, get in touch.</p>
+          <a href="#contact" class="btn btn-gold calc-cta">Need help with TDS filing?</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMI TOOL -->
+    <div class="tool-panel" data-panel="emi">
+      <div class="calc-cols">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label for="emiPrincipal">Loan Amount (NPR)</label>
+            <input type="number" id="emiPrincipal" inputmode="numeric" placeholder="e.g. 2500000" min="0"/>
+          </div>
+          <div class="calc-field">
+            <label for="emiRate">Annual Interest Rate (%)</label>
+            <input type="number" id="emiRate" inputmode="numeric" placeholder="e.g. 12" min="0" step="0.01"/>
+          </div>
+          <div class="calc-field">
+            <label for="emiYears">Tenure (years)</label>
+            <input type="number" id="emiYears" inputmode="numeric" placeholder="e.g. 15" min="0" step="0.5"/>
+          </div>
+        </div>
+        <div class="calc-results">
+          <span class="calc-fy">Loan EMI</span>
+          <div class="calc-headline">
+            <div class="ch-label">Monthly EMI</div>
+            <div class="ch-val" id="emiMonthly">NPR 0</div>
+          </div>
+          <div class="calc-summary">
+            <div class="calc-srow"><span class="sl">Principal</span><span class="sv" id="emiPrinOut">NPR 0</span></div>
+            <div class="calc-srow"><span class="sl">Total interest</span><span class="sv" id="emiInterest">NPR 0</span></div>
+            <div class="calc-srow net"><span class="sl">Total payable</span><span class="sv" id="emiTotal">NPR 0</span></div>
+          </div>
+          <p class="calc-disclaimer">Standard reducing-balance EMI estimate. Banks may apply fees, insurance, or different compounding. Confirm exact figures with your lender.</p>
+          <a href="#contact" class="btn btn-gold calc-cta">Planning a major purchase?</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2306,8 +2457,134 @@ function initCalc() {
   calcTax();
 }
 
+/* ============================================================
+   VAT RETURN CALCULATOR — Nepal standard 13%
+   Net VAT = Output VAT (sales) − Input VAT (taxable purchases)
+============================================================ */
+function calcVat() {
+  if (!$('#vatSales')) return;
+  const rate = num($('#vatRate')) / 100;
+  const sales = num($('#vatSales'));
+  const taxablePur = num($('#vatTaxablePur'));
+  const exemptPur = num($('#vatExemptPur'));
 
-/* reveal-on-scroll */
+  const outputVat = sales * rate;
+  const inputVat = taxablePur * rate;
+  const net = outputVat - inputVat;
+
+  $('#vatOutput').textContent = npr(outputVat);
+  $('#vatInput').textContent = npr(inputVat);
+  $('#vatExemptOut').textContent = npr(exemptPur);
+  $('#vatSalesGross').textContent = npr(sales + outputVat);
+  $('#vatPurGross').textContent = npr(taxablePur + inputVat);
+
+  if (net >= 0) {
+    $('#vatNetLabel').textContent = 'Net VAT Payable';
+    $('#vatNet').textContent = npr(net);
+    $('#vatNetNote').textContent = 'Payable to IRD this period';
+    $('#vatNetRowLabel').textContent = 'Net VAT payable';
+    $('#vatNetRow').textContent = npr(net);
+  } else {
+    $('#vatNetLabel').textContent = 'VAT Credit (Carry Forward)';
+    $('#vatNet').textContent = npr(Math.abs(net));
+    $('#vatNetNote').textContent = 'Creditable balance to next period';
+    $('#vatNetRowLabel').textContent = 'VAT credit carried forward';
+    $('#vatNetRow').textContent = npr(Math.abs(net));
+  }
+}
+function initVat() {
+  if (!$('#vatSales')) return;
+  ['#vatSales','#vatTaxablePur','#vatExemptPur','#vatRate']
+    .forEach(s => { const el = $(s); if (el) el.addEventListener('input', calcVat); });
+  calcVat();
+}
+
+/* ============================================================
+   TDS CALCULATOR — FY 2082/83 (Income Tax Act 2058 / Finance Act 2082)
+   ------------------------------------------------------------
+   Rates vary by payee type & circumstances; some are final
+   withholding. Verify against the current Finance Act before
+   relying on these for actual deduction. To edit a rate or add
+   a row, change the TDS_TYPES array below.
+============================================================ */
+const TDS_TYPES = [
+  { label: 'Service / professional / consultancy fee', rate: 0.15, note: '15% on professional & consultancy service fees.' },
+  { label: 'Service fee — VAT-registered service provider', rate: 0.015, note: '1.5% where the service provider is VAT-registered.' },
+  { label: 'Rent — paid to an entity (company/firm)', rate: 0.10, note: '10% on rent paid to an entity landlord. No TDS where the landlord is a natural person (house rent).' },
+  { label: 'Commission', rate: 0.15, note: '15% on commission payments.' },
+  { label: 'Interest — to resident natural person (bank/FI)', rate: 0.05, note: '5% on interest paid to a resident individual by a bank/financial institution. Final withholding.' },
+  { label: 'Interest — to company / non-resident', rate: 0.15, note: '15% on interest paid to companies or non-residents.' },
+  { label: 'Dividend — resident', rate: 0.05, note: '5% on dividends. Final withholding.' },
+  { label: 'Freight — transport of goods (resident natural person)', rate: 0.02, note: '2% on freight for transport of goods paid to a resident individual.' },
+  { label: 'Vehicle rental — resident natural person', rate: 0.10, note: '10% on vehicle rental paid to a resident individual.' },
+  { label: 'Contract / agreement payment', rate: 0.015, note: '1.5% on contract payments (over NPR 50,000 cumulative per contract).' },
+  { label: 'Payment to non-resident (general service)', rate: 0.05, note: '5% on general service payments to non-residents (varies by treaty/type).' },
+  { label: 'Gain on investment insurance / unapproved retirement fund', rate: 0.05, note: '5% on such gains. Final withholding.' }
+];
+function calcTds() {
+  if (!$('#tdsType')) return;
+  const idx = parseInt($('#tdsType').value || '0', 10);
+  const t = TDS_TYPES[idx] || TDS_TYPES[0];
+  const amt = num($('#tdsAmount'));
+  const tds = amt * t.rate;
+  $('#tdsTypeNote').textContent = t.note;
+  $('#tdsAmountOut').textContent = npr(tds);
+  $('#tdsRateOut').textContent = 'Rate: ' + (t.rate * 100) + '%';
+  $('#tdsGross').textContent = npr(amt);
+  $('#tdsDeducted').textContent = npr(tds);
+  $('#tdsNet').textContent = npr(amt - tds);
+}
+function initTds() {
+  if (!$('#tdsType')) return;
+  $('#tdsType').innerHTML = TDS_TYPES.map((t, i) => `<option value="${i}">${t.label}</option>`).join('');
+  $('#tdsType').addEventListener('change', calcTds);
+  $('#tdsAmount').addEventListener('input', calcTds);
+  calcTds();
+}
+
+/* ============================================================
+   LOAN EMI CALCULATOR — reducing balance
+============================================================ */
+function calcEmi() {
+  if (!$('#emiPrincipal')) return;
+  const P = num($('#emiPrincipal'));
+  const annual = num($('#emiRate'));
+  const years = num($('#emiYears'));
+  const n = Math.round(years * 12);
+  const r = annual / 100 / 12;
+  let emi = 0;
+  if (P > 0 && n > 0) {
+    emi = r === 0 ? P / n : (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+  const total = emi * n;
+  const interest = total - P;
+  $('#emiMonthly').textContent = npr(emi);
+  $('#emiPrinOut').textContent = npr(P);
+  $('#emiInterest').textContent = npr(interest > 0 ? interest : 0);
+  $('#emiTotal').textContent = npr(total > 0 ? total : 0);
+}
+function initEmi() {
+  if (!$('#emiPrincipal')) return;
+  ['#emiPrincipal','#emiRate','#emiYears'].forEach(s => $(s).addEventListener('input', calcEmi));
+  calcEmi();
+}
+
+/* ============================================================
+   TOOL TABS
+============================================================ */
+function initToolTabs() {
+  const tabs = $('#toolTabs');
+  if (!tabs) return;
+  tabs.addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    const tool = btn.dataset.tool;
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === btn));
+    document.querySelectorAll('.tool-panel').forEach(p =>
+      p.classList.toggle('on', p.dataset.panel === tool));
+  });
+}
+
+
 let _io;
 function observeReveal() {
   if (!_io) _io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); _io.unobserve(e.target); } }), { threshold: .08, rootMargin: '0px 0px -32px 0px' });
@@ -2323,6 +2600,10 @@ async function boot() {
   DATA = normalize(DATA);
   render();
   initCalc();
+  initVat();
+  initTds();
+  initEmi();
+  initToolTabs();
 
   const nav = $('#nav'), btt = $('#btt');
   window.addEventListener('scroll', () => {

@@ -734,6 +734,9 @@ small{font-size:.78rem;}
   transition:background .2s,color .2s;letter-spacing:.02em;
 }
 .calc-seg button.on{background:var(--gold);color:var(--ink);}
+.calc-seg--year{margin-bottom:14px;}
+.calc-seg--year button{font-weight:700;letter-spacing:.04em;}
+.calc-merged-note{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:22px;font-style:italic;}
 .calc-field{margin-bottom:18px;}
 .calc-field label{
   display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;
@@ -1000,10 +1003,15 @@ footer ul li a:hover{color:var(--gold-lt);}
     <div class="calc-cols rv rv-d1">
       <div class="calc-inputs">
         <span class="calc-fy" id="calcFyTag">FY 2082/83</span>
+        <div class="calc-seg calc-seg--year" id="calcYear">
+          <button type="button" data-year="2082/83" class="on">FY 2082/83</button>
+          <button type="button" data-year="2083/84">FY 2083/84</button>
+        </div>
         <div class="calc-seg" id="calcStatus">
           <button type="button" data-status="single" class="on">Individual</button>
           <button type="button" data-status="couple">Married Couple</button>
         </div>
+        <p class="calc-merged-note" id="calcStatusNote" style="display:none;">FY 2083/84 applies one unified slab to all residents — the individual/couple distinction has been removed.</p>
         <div class="calc-field">
           <label for="calcMonthly">Monthly Salary (NPR)</label>
           <input type="number" id="calcMonthly" inputmode="numeric" placeholder="e.g. 80000" min="0"/>
@@ -1067,7 +1075,7 @@ footer ul li a:hover{color:var(--gold-lt);}
           </table>
         </div>
 
-        <p class="calc-disclaimer">Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.</p>
+        <p class="calc-disclaimer" id="calcDisclaimer">Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.</p>
         <a href="#contact" class="btn btn-gold calc-cta">Need help with tax filing?</a>
       </div>
     </div>
@@ -2109,67 +2117,75 @@ function renderFooter() {
 /* ============================================================
    NEPAL SALARY TAX CALCULATOR
    ------------------------------------------------------------
-   Brackets are defined per fiscal year so they are trivial to
-   swap. CURRENT = FY 2082/83 (in force until Shrawan 1, 2083 /
-   mid-July 2026).
+   Two fiscal years supported via a toggle:
+   - 2082/83 : current, in force until Shrawan 1, 2083 (mid-Jul 2026).
+     Single/couple split applies. Source: Finance Act 2082.
+   - 2083/84 : upcoming (from mid-Jul 2026). Single/couple split
+     REMOVED — one uniform table. Top rate cut 39% -> 29%, first
+     1% band doubled to 10L. Source: Budget 2083/84 / Finance
+     Ordinance 2083. NOTE: pending final Finance Act passage —
+     verify intermediate bands against the IRD circular before
+     using for actual TDS/filing. If a band shifts, edit it below.
 
-   *** WHEN FY 2083/84 BEGINS (mid-July 2026) ***
-   Nepal removes the single/couple split — one uniform table for
-   all residents. Swap CURRENT to point at FY_2083_84 below and
-   update the labels (#calcFyTag / #calcFyTag2) to "FY 2083/84".
-   Uniform slabs: 1% up to 10L, 10% 10-15L, 20% 15-25L,
-   27% 25-40L, 29% above 40L. (Verify against the final
-   Finance Act before switching.)
+   To add a future year: copy a block, edit slabs + labels, and
+   add an <option> to #calcYear in the HTML. Each slab: upTo =
+   upper bound (Infinity = top band), rate = decimal rate. The
+   first slab's `sst:true` marks the 1% social security tax that
+   SSF contributors have waived.
 ============================================================ */
-const TAX_FY = {
-  label: 'FY 2082/83',
-  labelLong: 'FY 2082/83 · 2025/26',
-  // each slab: width (Infinity = top), rate. First slab rate is the 1% SST (waived if SSF).
-  single: [
-    { upTo: 500000, rate: 0.01, sst: true },
-    { upTo: 700000, rate: 0.10 },
-    { upTo: 1000000, rate: 0.20 },
-    { upTo: 2000000, rate: 0.30 },
-    { upTo: 5000000, rate: 0.36 },
-    { upTo: Infinity, rate: 0.39 }
-  ],
-  couple: [
-    { upTo: 600000, rate: 0.01, sst: true },
-    { upTo: 800000, rate: 0.10 },
-    { upTo: 1100000, rate: 0.20 },
-    { upTo: 2000000, rate: 0.30 },
-    { upTo: 5000000, rate: 0.36 },
-    { upTo: Infinity, rate: 0.39 }
-  ]
+const TAX_YEARS = {
+  '2082/83': {
+    label: 'FY 2082/83',
+    labelLong: 'FY 2082/83 · 2025/26',
+    splitStatus: true,  // single vs couple tables differ
+    single: [
+      { upTo: 500000, rate: 0.01, sst: true },
+      { upTo: 700000, rate: 0.10 },
+      { upTo: 1000000, rate: 0.20 },
+      { upTo: 2000000, rate: 0.30 },
+      { upTo: 5000000, rate: 0.36 },
+      { upTo: Infinity, rate: 0.39 }
+    ],
+    couple: [
+      { upTo: 600000, rate: 0.01, sst: true },
+      { upTo: 800000, rate: 0.10 },
+      { upTo: 1100000, rate: 0.20 },
+      { upTo: 2000000, rate: 0.30 },
+      { upTo: 5000000, rate: 0.36 },
+      { upTo: Infinity, rate: 0.39 }
+    ]
+  },
+  '2083/84': {
+    label: 'FY 2083/84',
+    labelLong: 'FY 2083/84 · 2026/27',
+    splitStatus: false, // uniform table — single/couple merged
+    single: [
+      { upTo: 1000000, rate: 0.01, sst: true },
+      { upTo: 1500000, rate: 0.10 },
+      { upTo: 2500000, rate: 0.20 },
+      { upTo: 4000000, rate: 0.27 },
+      { upTo: Infinity, rate: 0.29 }
+    ],
+    couple: [
+      { upTo: 1000000, rate: 0.01, sst: true },
+      { upTo: 1500000, rate: 0.10 },
+      { upTo: 2500000, rate: 0.20 },
+      { upTo: 4000000, rate: 0.27 },
+      { upTo: Infinity, rate: 0.29 }
+    ]
+  }
 };
-
-/* --- FY 2083/84 (uniform; activate from mid-July 2026) ---
-const FY_2083_84 = {
-  label: 'FY 2083/84',
-  labelLong: 'FY 2083/84 · 2026/27',
-  single: [
-    { upTo: 1000000, rate: 0.01, sst: true },
-    { upTo: 1500000, rate: 0.10 },
-    { upTo: 2500000, rate: 0.20 },
-    { upTo: 4000000, rate: 0.27 },
-    { upTo: Infinity, rate: 0.29 }
-  ],
-  couple: [  // same as single — split removed
-    { upTo: 1000000, rate: 0.01, sst: true },
-    { upTo: 1500000, rate: 0.10 },
-    { upTo: 2500000, rate: 0.20 },
-    { upTo: 4000000, rate: 0.27 },
-    { upTo: Infinity, rate: 0.29 }
-  ]
-};
-*/
+let CURRENT_YEAR = '2082/83';
 
 const npr = n => 'NPR ' + Math.round(n).toLocaleString('en-IN');
 const num = el => { const v = parseFloat(el.value); return isNaN(v) || v < 0 ? 0 : v; };
 
 function calcTax() {
-  const status = document.querySelector('#calcStatus button.on').dataset.status;
-  const slabs = TAX_FY[status];
+  const fy = TAX_YEARS[CURRENT_YEAR];
+  let status = document.querySelector('#calcStatus button.on').dataset.status;
+  // 2083/84 merged single & couple — force single table either way
+  if (!fy.splitStatus) status = 'single';
+  const slabs = fy[status];
 
   const gross = num($('#calcMonthly')) * num($('#calcMonths')) + num($('#calcBonus'));
   const ssf = $('#calcSSF').checked;
@@ -2220,11 +2236,45 @@ function calcTax() {
     : '<tr><td colspan="3" style="color:rgba(255,255,255,.4);">Enter your salary to see the breakdown.</td></tr>';
 }
 
+function applyYearUI() {
+  const fy = TAX_YEARS[CURRENT_YEAR];
+  $('#calcFyTag').textContent = fy.label;
+  $('#calcFyTag2').textContent = fy.labelLong;
+  // when single/couple merged, disable the status toggle and note it
+  const seg = $('#calcStatus');
+  const note = $('#calcStatusNote');
+  if (fy.splitStatus) {
+    seg.style.display = '';
+    if (note) note.style.display = 'none';
+  } else {
+    seg.style.display = 'none';
+    if (note) note.style.display = '';
+  }
+  // update disclaimer source line
+  const disc = $('#calcDisclaimer');
+  if (disc) {
+    disc.textContent = CURRENT_YEAR === '2083/84'
+      ? 'Estimate only, based on FY 2083/84 unified slabs (Budget 2083/84, pending final Finance Act). Verify against the IRD circular for filing. For accurate filing, get in touch.'
+      : 'Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.';
+  }
+}
+
 function initCalc() {
   if (!$('#taxcalc')) return;
-  $('#calcFyTag').textContent = TAX_FY.label;
-  $('#calcFyTag2').textContent = TAX_FY.labelLong;
-  // status toggle
+  applyYearUI();
+  // fiscal year selector
+  const yearSeg = $('#calcYear');
+  if (yearSeg) {
+    yearSeg.addEventListener('click', e => {
+      const btn = e.target.closest('button'); if (!btn) return;
+      yearSeg.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      CURRENT_YEAR = btn.dataset.year;
+      applyYearUI();
+      calcTax();
+    });
+  }
+  // status toggle (single / couple)
   $('#calcStatus').addEventListener('click', e => {
     const btn = e.target.closest('button'); if (!btn) return;
     $('#calcStatus').querySelectorAll('button').forEach(b => b.classList.remove('on'));

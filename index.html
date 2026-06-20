@@ -4,8 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Sures Guragai — Finance &amp; Audit Professional</title>
-<meta name="description" content="Sures Guragai (Suresh Guragain) – CA Finalist (ICAI). Finance & audit professional in Kathmandu, Nepal offering accounting, bookkeeping, audit support, VAT/TDS, and financial reporting services."/>
-<meta name="keywords" content="Sures Guragai, Suresh Guragain, Suresh Guragai, Suresh, CA Nepal, Chartered Accountant Nepal, Finance Professional Kathmandu, Audit, Bookkeeping, VAT, TDS, Financial Reporting"/>
+<meta name="description" content="Sures Guragai (Suresh Guragain) – CA Finalist (ICAI). Finance & audit professional in Kathmandu, Nepal offering accounting, bookkeeping, audit support, VAT/TDS, tax filing, tax clearance, and financial reporting. Free Nepal salary income tax calculator (FY 2082/83 & 2083/84)."/>
+<meta name="keywords" content="Sures Guragai, Suresh Guragain, Suresh Guragai, Suresh, CA Nepal, Chartered Accountant Nepal, Finance Professional Kathmandu, Audit, Bookkeeping, VAT, TDS, Tax Filing Nepal, Tax Clearance Nepal, Financial Reporting, Nepal salary tax calculator, Nepal income tax calculator, income tax Nepal 2082/83, income tax Nepal 2083/84, tax calculator Nepal"/>
 <meta name="author" content="Sures Guragai"/>
 <link rel="canonical" href="https://suresguragai.com.np/"/>
 
@@ -72,6 +72,17 @@
       "url": "https://suresguragai.com.np/",
       "name": "Sures Guragai",
       "publisher": { "@id": "https://suresguragai.com.np/#person" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://suresguragai.com.np/#taxcalculator",
+      "name": "Nepal Salary Tax Calculator",
+      "url": "https://suresguragai.com.np/#taxcalc",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web browser",
+      "description": "Free Nepal salary income tax calculator for FY 2082/83 and FY 2083/84. Calculates annual and monthly income tax with SSF, EPF, CIT, and insurance deductions for individuals and couples.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NPR" },
+      "creator": { "@id": "https://suresguragai.com.np/#person" }
     }
   ]
 }
@@ -1002,7 +1013,6 @@ footer ul li a:hover{color:var(--gold-lt);}
     </div>
     <div class="calc-cols rv rv-d1">
       <div class="calc-inputs">
-        <span class="calc-fy" id="calcFyTag">FY 2082/83</span>
         <div class="calc-seg calc-seg--year" id="calcYear">
           <button type="button" data-year="2082/83" class="on">FY 2082/83</button>
           <button type="button" data-year="2083/84">FY 2083/84</button>
@@ -1379,8 +1389,11 @@ footer ul li a:hover{color:var(--gold-lt);}
     },
     {
       "title": "Taxation Support",
-      "desc": "Timely preparation and filing of tax returns to keep your business compliant.",
+      "desc": "End-to-end tax compliance for individuals and businesses — from return filing to obtaining your tax clearance certificate.",
       "items": [
+        {
+          "text": "Income tax return filing (individuals & businesses)"
+        },
         {
           "text": "VAT return preparation & filing"
         },
@@ -1388,7 +1401,10 @@ footer ul li a:hover{color:var(--gold-lt);}
           "text": "TDS return preparation & filing"
         },
         {
-          "text": "Income tax compliance support"
+          "text": "Tax Clearance Certificate assistance"
+        },
+        {
+          "text": "Tax assessment & compliance support"
         },
         {
           "text": "Tax audit documentation"
@@ -1898,6 +1914,9 @@ footer ul li a:hover{color:var(--gold-lt);}
         "text": "Taxation Support (VAT / TDS)"
       },
       {
+        "text": "Tax Filing & Tax Clearance"
+      },
+      {
         "text": "Audit Support"
       },
       {
@@ -2238,7 +2257,6 @@ function calcTax() {
 
 function applyYearUI() {
   const fy = TAX_YEARS[CURRENT_YEAR];
-  $('#calcFyTag').textContent = fy.label;
   $('#calcFyTag2').textContent = fy.labelLong;
   // when single/couple merged, disable the status toggle and note it
   const seg = $('#calcStatus');

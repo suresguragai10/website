@@ -712,6 +712,79 @@ small{font-size:.78rem;}
 .btn-submit{width:100%;padding:15px;font-size:.88rem;}
 
 /* ============================================================
+   TAX CALCULATOR
+============================================================ */
+#taxcalc .calc-cols{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;
+}
+.calc-inputs{background:var(--white);padding:44px 40px;}
+.calc-results{background:var(--ink);padding:44px 40px;color:var(--white);}
+.calc-fy{
+  display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);
+  background:var(--gold-pale);padding:5px 12px;border-radius:2px;margin-bottom:24px;
+}
+.calc-results .calc-fy{background:rgba(193,154,60,.18);}
+.calc-seg{display:flex;gap:0;margin-bottom:22px;border:1.5px solid var(--rule);border-radius:var(--r);overflow:hidden;}
+.calc-seg button{
+  flex:1;padding:10px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;
+  background:var(--parchment);color:var(--body-text);border:none;cursor:pointer;
+  transition:background .2s,color .2s;letter-spacing:.02em;
+}
+.calc-seg button.on{background:var(--gold);color:var(--ink);}
+.calc-field{margin-bottom:18px;}
+.calc-field label{
+  display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--body-text);margin-bottom:7px;
+}
+.calc-field .hint{font-size:.7rem;color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none;margin-top:5px;}
+.calc-field input{
+  width:100%;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:.95rem;
+  color:var(--heading);background:var(--parchment);
+  border:1.5px solid var(--rule);border-radius:var(--r);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.calc-field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(193,154,60,.1);background:var(--white);}
+.calc-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;cursor:pointer;}
+.calc-check input{width:16px;height:16px;margin-top:3px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;}
+.calc-check .cc-text{font-size:.84rem;color:var(--body-text);line-height:1.5;}
+.calc-check .cc-text small{display:block;font-size:.72rem;color:var(--muted);}
+.calc-divider{height:1px;background:var(--rule);margin:26px 0;}
+.calc-sub-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+
+.calc-headline{margin-bottom:4px;}
+.calc-headline .ch-label{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
+.calc-headline .ch-val{font-family:'DM Serif Display',serif;font-size:2.6rem;color:var(--gold-lt);line-height:1.1;}
+.calc-headline .ch-sub{font-size:.82rem;color:rgba(255,255,255,.45);margin-top:6px;}
+.calc-summary{margin-top:28px;display:flex;flex-direction:column;gap:0;}
+.calc-srow{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.86rem;}
+.calc-srow:last-child{border-bottom:none;}
+.calc-srow .sl{color:rgba(255,255,255,.55);}
+.calc-srow .sv{color:var(--white);font-weight:600;font-variant-numeric:tabular-nums;}
+.calc-srow.net .sl{color:var(--gold-lt);font-weight:600;}
+.calc-srow.net .sv{color:var(--gold-lt);font-size:1.05rem;}
+.calc-slabs{margin-top:28px;}
+.calc-slabs table{width:100%;border-collapse:collapse;font-size:.8rem;}
+.calc-slabs th{
+  text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);padding:8px 8px 8px 0;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.calc-slabs th:last-child,.calc-slabs td:last-child{text-align:right;}
+.calc-slabs td{padding:9px 8px 9px 0;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums;}
+.calc-slabs tr:last-child td{border-bottom:none;}
+.calc-slabs td.rate{color:var(--gold-lt);font-weight:600;}
+.calc-disclaimer{font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:24px;font-style:italic;}
+.calc-cta{margin-top:26px;}
+
+@media(max-width:768px){
+  #taxcalc .calc-cols{grid-template-columns:1fr;}
+  .calc-inputs,.calc-results{padding:32px 24px;}
+}
+
+/* ============================================================
    FOOTER
 ============================================================ */
 footer{
@@ -849,6 +922,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       <ul class="nav-menu" id="navMenu">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#taxcalc">Tax Calculator</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -912,6 +986,91 @@ footer ul li a:hover{color:var(--gold-lt);}
     </div>
     <div class="svc-grid" id="svcGrid"></div>
     
+  </div>
+</section>
+
+<!-- TAX CALCULATOR -->
+<section id="taxcalc" class="sec sec--white">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <span class="sec-label">Free Tool</span>
+      <h2>Nepal Salary Tax Calculator</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="calc-cols rv rv-d1">
+      <div class="calc-inputs">
+        <span class="calc-fy" id="calcFyTag">FY 2082/83</span>
+        <div class="calc-seg" id="calcStatus">
+          <button type="button" data-status="single" class="on">Individual</button>
+          <button type="button" data-status="couple">Married Couple</button>
+        </div>
+        <div class="calc-field">
+          <label for="calcMonthly">Monthly Salary (NPR)</label>
+          <input type="number" id="calcMonthly" inputmode="numeric" placeholder="e.g. 80000" min="0"/>
+        </div>
+        <div class="calc-field">
+          <label for="calcMonths">Months</label>
+          <input type="number" id="calcMonths" inputmode="numeric" value="12" min="1" max="13"/>
+          <div class="hint">Use 13 if you receive Dashain/festival bonus as an extra month.</div>
+        </div>
+        <div class="calc-field">
+          <label for="calcBonus">Annual Bonus / Other Income (NPR)</label>
+          <input type="number" id="calcBonus" inputmode="numeric" placeholder="0" min="0"/>
+        </div>
+
+        <div class="calc-divider"></div>
+        <div class="calc-sub-label">Deductions</div>
+
+        <label class="calc-check">
+          <input type="checkbox" id="calcSSF"/>
+          <span class="cc-text">SSF contributor
+            <small>Waives the 1% social security tax on the first slab</small>
+          </span>
+        </label>
+        <div class="calc-field">
+          <label for="calcRetire">SSF / EPF / CIT — annual (NPR)</label>
+          <input type="number" id="calcRetire" inputmode="numeric" placeholder="0" min="0"/>
+          <div class="hint">Combined cap: NPR 5,00,000 or 1/3 of income, whichever is lower.</div>
+        </div>
+        <div class="calc-field">
+          <label for="calcLife">Life Insurance Premium — annual (NPR)</label>
+          <input type="number" id="calcLife" inputmode="numeric" placeholder="0" min="0"/>
+          <div class="hint">Capped at NPR 40,000.</div>
+        </div>
+        <div class="calc-field">
+          <label for="calcHealth">Health Insurance Premium — annual (NPR)</label>
+          <input type="number" id="calcHealth" inputmode="numeric" placeholder="0" min="0"/>
+          <div class="hint">Capped at NPR 20,000.</div>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <span class="calc-fy" id="calcFyTag2">FY 2082/83 · 2025/26</span>
+        <div class="calc-headline">
+          <div class="ch-label">Total Annual Tax</div>
+          <div class="ch-val" id="calcTaxYear">NPR 0</div>
+          <div class="ch-sub" id="calcTaxMonth">NPR 0 / month</div>
+        </div>
+
+        <div class="calc-summary">
+          <div class="calc-srow"><span class="sl">Gross annual income</span><span class="sv" id="calcGross">NPR 0</span></div>
+          <div class="calc-srow"><span class="sl">Total deductions</span><span class="sv" id="calcDeduct">NPR 0</span></div>
+          <div class="calc-srow"><span class="sl">Taxable income</span><span class="sv" id="calcTaxable">NPR 0</span></div>
+          <div class="calc-srow"><span class="sl">Effective tax rate</span><span class="sv" id="calcEffective">0%</span></div>
+          <div class="calc-srow net"><span class="sl">Net take-home / year</span><span class="sv" id="calcNet">NPR 0</span></div>
+        </div>
+
+        <div class="calc-slabs">
+          <table>
+            <thead><tr><th>Slab</th><th>Rate</th><th>Tax</th></tr></thead>
+            <tbody id="calcSlabBody"></tbody>
+          </table>
+        </div>
+
+        <p class="calc-disclaimer">Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.</p>
+        <a href="#contact" class="btn btn-gold calc-cta">Need help with tax filing?</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1947,6 +2106,139 @@ function renderFooter() {
   $('#footBottomLine').innerHTML = esc(f.bottomLine);
 }
 
+/* ============================================================
+   NEPAL SALARY TAX CALCULATOR
+   ------------------------------------------------------------
+   Brackets are defined per fiscal year so they are trivial to
+   swap. CURRENT = FY 2082/83 (in force until Shrawan 1, 2083 /
+   mid-July 2026).
+
+   *** WHEN FY 2083/84 BEGINS (mid-July 2026) ***
+   Nepal removes the single/couple split — one uniform table for
+   all residents. Swap CURRENT to point at FY_2083_84 below and
+   update the labels (#calcFyTag / #calcFyTag2) to "FY 2083/84".
+   Uniform slabs: 1% up to 10L, 10% 10-15L, 20% 15-25L,
+   27% 25-40L, 29% above 40L. (Verify against the final
+   Finance Act before switching.)
+============================================================ */
+const TAX_FY = {
+  label: 'FY 2082/83',
+  labelLong: 'FY 2082/83 · 2025/26',
+  // each slab: width (Infinity = top), rate. First slab rate is the 1% SST (waived if SSF).
+  single: [
+    { upTo: 500000, rate: 0.01, sst: true },
+    { upTo: 700000, rate: 0.10 },
+    { upTo: 1000000, rate: 0.20 },
+    { upTo: 2000000, rate: 0.30 },
+    { upTo: 5000000, rate: 0.36 },
+    { upTo: Infinity, rate: 0.39 }
+  ],
+  couple: [
+    { upTo: 600000, rate: 0.01, sst: true },
+    { upTo: 800000, rate: 0.10 },
+    { upTo: 1100000, rate: 0.20 },
+    { upTo: 2000000, rate: 0.30 },
+    { upTo: 5000000, rate: 0.36 },
+    { upTo: Infinity, rate: 0.39 }
+  ]
+};
+
+/* --- FY 2083/84 (uniform; activate from mid-July 2026) ---
+const FY_2083_84 = {
+  label: 'FY 2083/84',
+  labelLong: 'FY 2083/84 · 2026/27',
+  single: [
+    { upTo: 1000000, rate: 0.01, sst: true },
+    { upTo: 1500000, rate: 0.10 },
+    { upTo: 2500000, rate: 0.20 },
+    { upTo: 4000000, rate: 0.27 },
+    { upTo: Infinity, rate: 0.29 }
+  ],
+  couple: [  // same as single — split removed
+    { upTo: 1000000, rate: 0.01, sst: true },
+    { upTo: 1500000, rate: 0.10 },
+    { upTo: 2500000, rate: 0.20 },
+    { upTo: 4000000, rate: 0.27 },
+    { upTo: Infinity, rate: 0.29 }
+  ]
+};
+*/
+
+const npr = n => 'NPR ' + Math.round(n).toLocaleString('en-IN');
+const num = el => { const v = parseFloat(el.value); return isNaN(v) || v < 0 ? 0 : v; };
+
+function calcTax() {
+  const status = document.querySelector('#calcStatus button.on').dataset.status;
+  const slabs = TAX_FY[status];
+
+  const gross = num($('#calcMonthly')) * num($('#calcMonths')) + num($('#calcBonus'));
+  const ssf = $('#calcSSF').checked;
+
+  // deductions with statutory caps
+  const retireCap = Math.min(500000, gross / 3);
+  const retire = Math.min(num($('#calcRetire')), retireCap);
+  const life = Math.min(num($('#calcLife')), 40000);
+  const health = Math.min(num($('#calcHealth')), 20000);
+  const deductions = retire + life + health;
+
+  const taxable = Math.max(0, gross - deductions);
+
+  // progressive slab calc
+  let remaining = taxable, lower = 0, totalTax = 0;
+  const rows = [];
+  for (const s of slabs) {
+    if (remaining <= 0) break;
+    const width = s.upTo - lower;
+    const inThis = Math.min(remaining, width);
+    let rate = s.rate;
+    if (s.sst && ssf) rate = 0; // SSF waives the 1% first-slab tax
+    const tax = inThis * rate;
+    totalTax += tax;
+    rows.push({
+      band: s.upTo === Infinity
+        ? 'Above ' + (lower).toLocaleString('en-IN')
+        : (lower).toLocaleString('en-IN') + ' – ' + (s.upTo).toLocaleString('en-IN'),
+      rate: (s.sst && ssf) ? '0% (SSF)' : (s.rate * 100) + '%',
+      tax: tax
+    });
+    remaining -= inThis;
+    lower = s.upTo;
+  }
+
+  // render
+  $('#calcGross').textContent = npr(gross);
+  $('#calcDeduct').textContent = npr(deductions);
+  $('#calcTaxable').textContent = npr(taxable);
+  $('#calcTaxYear').textContent = npr(totalTax);
+  $('#calcTaxMonth').textContent = npr(totalTax / 12) + ' / month';
+  $('#calcNet').textContent = npr(gross - totalTax);
+  $('#calcEffective').textContent = (gross > 0 ? (totalTax / gross * 100).toFixed(1) : '0') + '%';
+
+  const body = $('#calcSlabBody');
+  body.innerHTML = rows.length
+    ? rows.map(r => `<tr><td>${r.band}</td><td class="rate">${r.rate}</td><td>${npr(r.tax)}</td></tr>`).join('')
+    : '<tr><td colspan="3" style="color:rgba(255,255,255,.4);">Enter your salary to see the breakdown.</td></tr>';
+}
+
+function initCalc() {
+  if (!$('#taxcalc')) return;
+  $('#calcFyTag').textContent = TAX_FY.label;
+  $('#calcFyTag2').textContent = TAX_FY.labelLong;
+  // status toggle
+  $('#calcStatus').addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    $('#calcStatus').querySelectorAll('button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    calcTax();
+  });
+  // live recalc on any input
+  ['#calcMonthly','#calcMonths','#calcBonus','#calcRetire','#calcLife','#calcHealth','#calcSSF']
+    .forEach(sel => { const el = $(sel); if (el) el.addEventListener('input', calcTax); });
+  $('#calcSSF').addEventListener('change', calcTax);
+  calcTax();
+}
+
+
 /* reveal-on-scroll */
 let _io;
 function observeReveal() {
@@ -1962,6 +2254,7 @@ async function boot() {
   } catch (e) { /* offline / fallback to seed */ }
   DATA = normalize(DATA);
   render();
+  initCalc();
 
   const nav = $('#nav'), btt = $('#btt');
   window.addEventListener('scroll', () => {

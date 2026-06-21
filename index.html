@@ -836,6 +836,40 @@ small{font-size:.78rem;}
 .calc-disclaimer{font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:24px;font-style:italic;}
 .calc-cta{margin-top:26px;}
 
+/* Amortization schedule */
+.amort{margin-top:32px;}
+.amort-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.amort-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.02em;
+  color:var(--ink);background:transparent;border:1.5px solid var(--rule);
+  border-radius:var(--r);padding:11px 18px;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.amort-toggle:hover{border-color:var(--gold);color:var(--gold-dk,var(--gold));}
+.amort-chev{font-size:.7rem;transition:transform .25s var(--ease);}
+.amort-toggle[aria-expanded="true"] .amort-chev{transform:rotate(180deg);}
+.amort-view{margin-bottom:0;max-width:220px;}
+.amort-body{margin-top:20px;animation:toolFade .3s var(--ease);}
+.amort-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:var(--r);}
+.amort-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:440px;}
+.amort-table thead th{
+  position:sticky;top:0;background:var(--ink);color:rgba(255,255,255,.7);
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.66rem;
+  letter-spacing:.1em;text-transform:uppercase;text-align:right;
+  padding:12px 16px;white-space:nowrap;
+}
+.amort-table thead th:first-child{text-align:left;}
+.amort-table td{
+  padding:11px 16px;text-align:right;border-bottom:1px solid var(--rule);
+  color:var(--body-text);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.amort-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.amort-table tbody tr:nth-child(even){background:var(--parchment);}
+.amort-table tbody tr:last-child td{border-bottom:none;}
+.amort-table tr.amort-year-sep td:first-child{color:var(--gold);}
+.amort-note{font-size:.74rem;color:var(--muted);line-height:1.6;margin-top:14px;font-style:italic;}
+
 @media(max-width:768px){
   #taxcalc .calc-cols{grid-template-columns:1fr;}
   .calc-inputs,.calc-results{padding:32px 24px;}
@@ -1271,6 +1305,36 @@ footer ul li a:hover{color:var(--gold-lt);}
           </div>
           <p class="calc-disclaimer">Standard reducing-balance EMI estimate. Banks may apply fees, insurance, or different compounding. Confirm exact figures with your lender.</p>
           <a href="#contact" class="btn btn-gold calc-cta">Planning a major purchase?</a>
+        </div>
+      </div>
+
+      <!-- AMORTIZATION SCHEDULE -->
+      <div class="amort" id="amortWrap" style="display:none;">
+        <div class="amort-head">
+          <button type="button" class="amort-toggle" id="amortToggle" aria-expanded="false">
+            <span id="amortToggleLabel">Show amortization schedule</span>
+            <span class="amort-chev" aria-hidden="true">▾</span>
+          </button>
+          <div class="calc-seg amort-view" id="amortView" style="display:none;">
+            <button type="button" data-view="yearly" class="on">Yearly</button>
+            <button type="button" data-view="monthly">Monthly</button>
+          </div>
+        </div>
+        <div class="amort-body" id="amortBody" style="display:none;">
+          <div class="amort-scroll">
+            <table class="amort-table" id="amortTable">
+              <thead>
+                <tr>
+                  <th id="amortColPeriod">Year</th>
+                  <th>Principal</th>
+                  <th>Interest</th>
+                  <th>Balance</th>
+                </tr>
+              </thead>
+              <tbody id="amortTableBody"></tbody>
+            </table>
+          </div>
+          <p class="amort-note" id="amortNote"></p>
         </div>
       </div>
     </div>
@@ -2645,6 +2709,9 @@ function initTds() {
 /* ============================================================
    LOAN EMI CALCULATOR — reducing balance
 ============================================================ */
+let EMI_SCHEDULE = [];   // per-month rows: {period, principal, interest, balance}
+let EMI_VALID = false;   // whether a schedule exists to show
+
 function calcEmi() {
   if (!$('#emiPrincipal')) return;
   const P = num($('#emiPrincipal'));
@@ -2662,10 +2729,97 @@ function calcEmi() {
   $('#emiPrinOut').textContent = npr(P);
   $('#emiInterest').textContent = npr(interest > 0 ? interest : 0);
   $('#emiTotal').textContent = npr(total > 0 ? total : 0);
+
+  // build month-by-month amortization schedule
+  EMI_SCHEDULE = [];
+  EMI_VALID = P > 0 && n > 0 && emi > 0;
+  if (EMI_VALID) {
+    let bal = P;
+    for (let m = 1; m <= n; m++) {
+      const intPart = bal * r;
+      let prinPart = emi - intPart;
+      // last payment: clear any rounding residue
+      if (m === n) { prinPart = bal; }
+      bal = Math.max(0, bal - prinPart);
+      EMI_SCHEDULE.push({ period: m, principal: prinPart, interest: intPart, balance: bal });
+    }
+  }
+  renderAmort();
 }
+
+function renderAmort() {
+  const wrap = $('#amortWrap');
+  if (!wrap) return;
+  // hide the whole schedule UI when there's nothing valid to show
+  wrap.style.display = EMI_VALID ? '' : 'none';
+  if (!EMI_VALID) {
+    const body = $('#amortBody'); if (body) body.style.display = 'none';
+    const tog = $('#amortToggle');
+    if (tog) { tog.setAttribute('aria-expanded', 'false'); $('#amortToggleLabel').textContent = 'Show amortization schedule'; }
+    return;
+  }
+
+  const tog = $('#amortToggle');
+  const open = tog && tog.getAttribute('aria-expanded') === 'true';
+  if (!open) return; // only build rows when expanded
+
+  const viewBtn = document.querySelector('#amortView button.on');
+  const view = viewBtn ? viewBtn.dataset.view : 'yearly';
+  const tbody = $('#amortTableBody');
+  const note = $('#amortNote');
+  $('#amortColPeriod').textContent = view === 'monthly' ? 'Payment #' : 'Year';
+
+  if (view === 'monthly') {
+    tbody.innerHTML = EMI_SCHEDULE.map(row =>
+      `<tr><td>${row.period}</td><td>${npr(row.principal)}</td><td>${npr(row.interest)}</td><td>${npr(row.balance)}</td></tr>`
+    ).join('');
+    note.textContent = `${EMI_SCHEDULE.length} monthly payments. Scroll to view all. Figures rounded; the final payment absorbs any rounding difference.`;
+  } else {
+    // aggregate into 12-month years
+    const years = [];
+    for (let i = 0; i < EMI_SCHEDULE.length; i += 12) {
+      const chunk = EMI_SCHEDULE.slice(i, i + 12);
+      years.push({
+        year: (i / 12) + 1,
+        principal: chunk.reduce((s, x) => s + x.principal, 0),
+        interest: chunk.reduce((s, x) => s + x.interest, 0),
+        balance: chunk[chunk.length - 1].balance
+      });
+    }
+    tbody.innerHTML = years.map(y =>
+      `<tr class="amort-year-sep"><td>Year ${y.year}</td><td>${npr(y.principal)}</td><td>${npr(y.interest)}</td><td>${npr(y.balance)}</td></tr>`
+    ).join('');
+    note.textContent = `Yearly summary (principal + interest paid each year, and balance at year end). Switch to Monthly for the full payment-by-payment schedule.`;
+  }
+}
+
 function initEmi() {
   if (!$('#emiPrincipal')) return;
   ['#emiPrincipal','#emiRate','#emiYears'].forEach(s => $(s).addEventListener('input', calcEmi));
+
+  // expand / collapse the schedule
+  const tog = $('#amortToggle');
+  if (tog) {
+    tog.addEventListener('click', () => {
+      const open = tog.getAttribute('aria-expanded') === 'true';
+      const next = !open;
+      tog.setAttribute('aria-expanded', String(next));
+      $('#amortToggleLabel').textContent = next ? 'Hide amortization schedule' : 'Show amortization schedule';
+      $('#amortBody').style.display = next ? '' : 'none';
+      $('#amortView').style.display = next ? '' : 'none';
+      renderAmort();
+    });
+  }
+  // yearly / monthly view toggle
+  const viewSeg = $('#amortView');
+  if (viewSeg) {
+    viewSeg.addEventListener('click', e => {
+      const btn = e.target.closest('button'); if (!btn) return;
+      viewSeg.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      renderAmort();
+    });
+  }
   calcEmi();
 }
 

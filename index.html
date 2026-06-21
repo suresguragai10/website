@@ -1763,7 +1763,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "CA — ICAI",
       "title": "CA Final · Group I",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "January 2026",
+      "yr": "",
       "status": "Passed",
       "statusType": "pass",
       "status2": "Group II — Ongoing"
@@ -1772,7 +1772,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "CA — ICAI",
       "title": "IPCC · Groups I & II",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "Nov 2016 & Nov 2018",
+      "yr": "",
       "status": "Both Groups Passed",
       "statusType": "pass"
     },
@@ -1780,7 +1780,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "CA — ICAI",
       "title": "CPT",
       "inst": "Institute of Chartered Accountants of India",
-      "yr": "December 2013",
+      "yr": "",
       "status": "Passed",
       "statusType": "pass"
     },
@@ -1788,7 +1788,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "Postgraduate",
       "title": "MBS — Master of Business Studies",
       "inst": "Currently Pursuing",
-      "yr": "Ongoing",
+      "yr": "",
       "status": "In Progress",
       "statusType": "on"
     },
@@ -1796,7 +1796,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "Law",
       "title": "LLB — Bachelor of Laws",
       "inst": "Currently Pursuing",
-      "yr": "Ongoing",
+      "yr": "",
       "status": "In Progress",
       "statusType": "on"
     },
@@ -1804,7 +1804,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "Undergraduate",
       "title": "B.Com · Accounting & Finance",
       "inst": "Indira Gandhi National Open University (IGNOU)",
-      "yr": "Completed 2024",
+      "yr": "",
       "status": "Completed",
       "statusType": "pass"
     },
@@ -1812,7 +1812,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "Higher Secondary",
       "title": "+2 Management (HSEB)",
       "inst": "College for Higher Education, Birtamod, Jhapa",
-      "yr": "2011 – 2013",
+      "yr": "",
       "status": "Completed",
       "statusType": "pass"
     },
@@ -1820,7 +1820,7 @@ footer ul li a:hover{color:var(--gold-lt);}
       "tag": "High School",
       "title": "Secondary Level (SLC)",
       "inst": "Government of Nepal",
-      "yr": "2010",
+      "yr": "",
       "status": "Completed",
       "statusType": "pass"
     }
@@ -2196,7 +2196,7 @@ function renderEducation() {
   DATA.education.forEach((e, i) => {
     const st2 = e.status2 ? `<span class="edu-status s-pend" style="margin-left:6px;">${esc(e.status2)}</span>` : '';
     g.appendChild(create('div', 'edu-card rv' + (i % 4 ? ' rv-d' + (i % 4) : ''),
-      `<span class="edu-tag">${esc(e.tag)}</span><h3>${esc(e.title)}</h3><div class="inst">${esc(e.inst)}</div><div class="yr">${esc(e.yr)}</div><span class="edu-status s-${e.statusType || 'pass'}">${esc(e.status)}</span>${st2}`));
+      `<span class="edu-tag">${esc(e.tag)}</span><h3>${esc(e.title)}</h3><div class="inst">${esc(e.inst)}</div>${e.yr ? `<div class="yr">${esc(e.yr)}</div>` : ''}<span class="edu-status s-${e.statusType || 'pass'}">${esc(e.status)}</span>${st2}`));
   });
 }
 function renderSkills() {

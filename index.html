@@ -392,6 +392,26 @@ small{font-size:.78rem;}
 .about-prose p{margin-bottom:22px;font-size:.97rem;line-height:1.9;}
 .about-prose p:last-child{margin-bottom:0;}
 
+.about-photo{
+  width:100%;display:flex;justify-content:center;margin-bottom:36px;
+}
+.about-photo .ap-frame{
+  width:200px;height:200px;border-radius:50%;
+  border:3px solid var(--gold);padding:5px;
+  box-shadow:0 10px 30px rgba(10,22,40,.12);
+}
+.about-photo .ap-frame img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;
+}
+.about-photo .ap-placeholder{
+  width:100%;height:100%;border-radius:50%;
+  background:var(--navy);color:var(--gold-lt);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-size:3.4rem;letter-spacing:.04em;
+}
+@media(max-width:860px){
+  .about-photo .ap-frame{width:160px;height:160px;}
+}
 .fact-list{display:flex;flex-direction:column;gap:0;}
 .fact-row{
   display:flex;flex-direction:column;
@@ -1004,7 +1024,10 @@ footer ul li a:hover{color:var(--gold-lt);}
         <div class="strength-grid" id="aboutStrengths"></div>
         
       </div>
-      <div class="fact-list rv rv-d1" id="aboutFacts"></div>
+      <div class="about-side rv rv-d1">
+        <div class="about-photo" id="aboutPhoto"></div>
+        <div class="fact-list" id="aboutFacts"></div>
+      </div>
     </div>
     
   </div>
@@ -1447,6 +1470,7 @@ footer ul li a:hover{color:var(--gold-lt);}
     }
   ],
   "about": {
+    "photo": "",
     "heading": "A finance professional who gets the details right",
     "paragraphs": [
       {
@@ -2030,24 +2054,24 @@ footer ul li a:hover{color:var(--gold-lt);}
   ],
   "testimonials": [
     {
-      "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
-      "name": "[Colleague Name]",
-      "role": "Nepal Works · Finance Team",
-      "avatar": "C"
+        "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
+        "name": "Niroj Shrestha",
+        "role": "Nepa Works · Finance Team",
+        "avatar": "N"
     },
     {
-      "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
-      "name": "[Client Name]",
-      "role": "Audit Client · Kathmandu",
-      "avatar": "A"
+        "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
+        "name": "Pawan Sigdel",
+        "role": "Audit Client · Kathmandu",
+        "avatar": "P"
     },
     {
-      "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
-      "name": "[Business Owner Name]",
-      "role": "SME Client · Nepal",
-      "avatar": "B"
+        "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
+        "name": "Anil Nepal",
+        "role": "SME Client · Nepal",
+        "avatar": "A"
     }
-  ],
+],
   "contact": {
     "heading": "Let's work together",
     "intro": "Available for freelance engagements, consulting work, and full-time opportunities. Reach out via the form or directly using the details below.",
@@ -2167,6 +2191,12 @@ function renderTrust() {
 function renderAbout() {
   const a = DATA.about;
   $('#aboutHeading').innerHTML = esc(a.heading);
+  const ph = $('#aboutPhoto');
+  if (ph) {
+    ph.innerHTML = a.photo
+      ? `<div class="ap-frame"><img src="${esc(a.photo)}" alt="Sures Guragai" loading="lazy"/></div>`
+      : `<div class="ap-frame"><div class="ap-placeholder">SG</div></div>`;
+  }
   const pw = $('#aboutParas'); pw.innerHTML = '';
   a.paragraphs.forEach(p => pw.appendChild(create('p', '', esc(p))));
   const sg = $('#aboutStrengths'); sg.innerHTML = '';

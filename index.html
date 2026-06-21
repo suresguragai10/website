@@ -746,12 +746,15 @@ small{font-size:.78rem;}
    FINANCIAL TOOLS — tabs
 ============================================================ */
 .tool-tabs{
-  display:flex;flex-wrap:wrap;gap:4px;margin-bottom:28px;
+  display:flex;flex-wrap:nowrap;gap:4px;margin-bottom:28px;
   border-bottom:1px solid var(--rule);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
+.tool-tabs::-webkit-scrollbar{display:none;}
 .tool-tabs button{
   font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;
-  letter-spacing:.02em;color:var(--muted);
+  letter-spacing:.02em;color:var(--muted);white-space:nowrap;flex:0 0 auto;
   background:transparent;border:none;cursor:pointer;
   padding:12px 22px;border-bottom:2px solid transparent;
   margin-bottom:-1px;transition:color .2s,border-color .2s;
@@ -836,6 +839,9 @@ small{font-size:.78rem;}
 @media(max-width:768px){
   #taxcalc .calc-cols{grid-template-columns:1fr;}
   .calc-inputs,.calc-results{padding:32px 24px;}
+  .tool-tabs button{padding:12px 16px;}
+  .calc-slabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .calc-slabs table{min-width:340px;}
 }
 
 /* ============================================================

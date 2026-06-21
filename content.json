@@ -58,6 +58,7 @@
     }
   ],
   "about": {
+    "photo": "",
     "heading": "A finance professional who gets the details right",
     "paragraphs": [
       {
@@ -642,21 +643,21 @@
   "testimonials": [
     {
       "quote": "Sures has a strong grasp of financial reconciliation and always ensures ledger accuracy is maintained. His attention to detail and follow-through make him a dependable member of the finance team.",
-      "name": "[Colleague Name]",
-      "role": "Nepal Works · Finance Team",
-      "avatar": "C"
+      "name": "Niroj Shrestha",
+      "role": "Nepa Works · Finance Team",
+      "avatar": "N"
     },
     {
       "quote": "He handled our statutory audit work with professionalism and thoroughness. VAT and TDS filings were always completed on time, and he communicated any issues clearly without delay.",
-      "name": "[Client Name]",
+      "name": "Pawan Sigdel",
       "role": "Audit Client · Kathmandu",
-      "avatar": "A"
+      "avatar": "P"
     },
     {
       "quote": "A reliable and knowledgeable finance professional. Sures helped us set up our bookkeeping systems and prepare our accounts in a structured way from the very beginning.",
-      "name": "[Business Owner Name]",
+      "name": "Anil Nepal",
       "role": "SME Client · Nepal",
-      "avatar": "B"
+      "avatar": "A"
     }
   ],
   "contact": {

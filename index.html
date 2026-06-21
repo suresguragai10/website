@@ -852,7 +852,7 @@ small{font-size:.78rem;}
 .amort-view{margin-bottom:0;max-width:220px;}
 .amort-body{margin-top:20px;animation:toolFade .3s var(--ease);}
 .amort-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:var(--r);}
-.amort-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:440px;}
+.amort-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:540px;}
 .amort-table thead th{
   position:sticky;top:0;background:var(--ink);color:rgba(255,255,255,.7);
   font-family:'DM Sans',sans-serif;font-weight:600;font-size:.66rem;
@@ -1326,6 +1326,7 @@ footer ul li a:hover{color:var(--gold-lt);}
               <thead>
                 <tr>
                   <th id="amortColPeriod">Year</th>
+                  <th>EMI</th>
                   <th>Principal</th>
                   <th>Interest</th>
                   <th>Balance</th>
@@ -2771,9 +2772,9 @@ function renderAmort() {
 
   if (view === 'monthly') {
     tbody.innerHTML = EMI_SCHEDULE.map(row =>
-      `<tr><td>${row.period}</td><td>${npr(row.principal)}</td><td>${npr(row.interest)}</td><td>${npr(row.balance)}</td></tr>`
+      `<tr><td>${row.period}</td><td>${npr(row.principal + row.interest)}</td><td>${npr(row.principal)}</td><td>${npr(row.interest)}</td><td>${npr(row.balance)}</td></tr>`
     ).join('');
-    note.textContent = `${EMI_SCHEDULE.length} monthly payments. Scroll to view all. Figures rounded; the final payment absorbs any rounding difference.`;
+    note.textContent = `${EMI_SCHEDULE.length} monthly payments. EMI = principal + interest. Scroll to view all. Figures rounded; the final payment absorbs any rounding difference.`;
   } else {
     // aggregate into 12-month years
     const years = [];
@@ -2787,9 +2788,9 @@ function renderAmort() {
       });
     }
     tbody.innerHTML = years.map(y =>
-      `<tr class="amort-year-sep"><td>Year ${y.year}</td><td>${npr(y.principal)}</td><td>${npr(y.interest)}</td><td>${npr(y.balance)}</td></tr>`
+      `<tr class="amort-year-sep"><td>Year ${y.year}</td><td>${npr(y.principal + y.interest)}</td><td>${npr(y.principal)}</td><td>${npr(y.interest)}</td><td>${npr(y.balance)}</td></tr>`
     ).join('');
-    note.textContent = `Yearly summary (principal + interest paid each year, and balance at year end). Switch to Monthly for the full payment-by-payment schedule.`;
+    note.textContent = `Yearly summary — total paid (EMI), and how it splits into principal and interest, with balance at year end. Switch to Monthly for the full payment-by-payment schedule.`;
   }
 }
 

@@ -1081,6 +1081,11 @@ footer ul li a:hover{color:var(--gold-lt);}
             <button type="button" data-status="couple">Married Couple</button>
           </div>
           <p class="calc-merged-note" id="calcStatusNote" style="display:none;">FY 2083/84 applies one unified slab to all residents — the individual/couple distinction has been removed.</p>
+          <div class="calc-seg" id="calcGender">
+            <button type="button" data-gender="other" class="on">Male / Other</button>
+            <button type="button" data-gender="female">Female</button>
+          </div>
+          <p class="calc-merged-note" id="calcRebateNote">Resident women with employment income only, filing individually, get a 10% rebate on computed tax. Not available with married-couple joint filing.</p>
           <div class="calc-field">
             <label for="calcMonthly">Monthly Salary (NPR)</label>
             <input type="number" id="calcMonthly" inputmode="numeric" placeholder="e.g. 80000" min="0"/>
@@ -1132,6 +1137,7 @@ footer ul li a:hover{color:var(--gold-lt);}
             <div class="calc-srow"><span class="sl">Gross annual income</span><span class="sv" id="calcGross">NPR 0</span></div>
             <div class="calc-srow"><span class="sl">Total deductions</span><span class="sv" id="calcDeduct">NPR 0</span></div>
             <div class="calc-srow"><span class="sl">Taxable income</span><span class="sv" id="calcTaxable">NPR 0</span></div>
+            <div class="calc-srow" id="calcRebateRow" style="display:none;"><span class="sl">Female rebate (10%)</span><span class="sv" id="calcRebate">− NPR 0</span></div>
             <div class="calc-srow"><span class="sl">Effective tax rate</span><span class="sv" id="calcEffective">0%</span></div>
             <div class="calc-srow net"><span class="sl">Net take-home / year</span><span class="sv" id="calcNet">NPR 0</span></div>
           </div>
@@ -1353,18 +1359,19 @@ footer ul li a:hover{color:var(--gold-lt);}
         <p id="contactIntro"></p>
         <div class="cd-item"><div class="cd-icon">📞</div><div class="cd-text"><strong>Phone</strong><a id="cdPhone" href="#"></a></div></div>
         <div class="cd-item"><div class="cd-icon">✉️</div><div class="cd-text"><strong>Email</strong><a id="cdEmail" href="#"></a></div></div>
-        <div class="cd-item"><div class="cd-icon">💼</div><div class="cd-text"><strong>LinkedIn</strong><a id="cdLinkedIn" href="#" target="_blank" rel="noopener"></a></div></div>
+        <div class="cd-item"><div class="cd-icon">💼</div><div class="cd-text"><strong>LinkedIn</strong><a id="cdLinkedIn" href="#" target="_blank" rel="noopener noreferrer"></a></div></div>
         <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong>Location</strong><span id="cdLocation"></span></div></div>
         <div class="cd-item"><div class="cd-icon">🌐</div><div class="cd-text"><strong>Website</strong><a id="cdWebsite" href="#" target="_blank" rel="noopener"></a></div></div>
       </div>
       <form class="contact-form-wrap rv rv-d1" id="contactForm">
         <div class="form-duo">
-          <div class="fg"><label for="fn">Full Name</label><input type="text" id="fn" name="name" placeholder="Your full name"/></div>
-          <div class="fg"><label for="em">Email</label><input type="email" id="em" name="email" placeholder="you@example.com"/></div>
+          <div class="fg"><label for="fn">Full Name</label><input type="text" id="fn" name="name" placeholder="Your full name" required autocomplete="name"/></div>
+          <div class="fg"><label for="em">Email</label><input type="email" id="em" name="email" placeholder="you@example.com" required autocomplete="email"/></div>
         </div>
         <div class="fg"><label for="sv">Service</label><select id="sv" name="service"></select></div>
-        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" name="subject" placeholder="Brief subject line"/></div>
-        <div class="fg"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="How can I help you?"></textarea></div>
+        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" name="subject" placeholder="Brief subject line" required/></div>
+        <div class="fg"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="How can I help you?" required></textarea></div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
         <button class="btn btn-gold btn-submit" type="submit" id="contactSubmit">Send Message</button>
       </form>
     </div>
@@ -2280,6 +2287,11 @@ function renderContact() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    // native validation: required fields + email format
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const btn = $('#contactSubmit');
     const original = btn.textContent;
     btn.textContent = 'Sending…';
@@ -2302,7 +2314,7 @@ function renderContact() {
     } catch (err) {
       btn.textContent = original;
       btn.disabled = false;
-      alert('Sorry, something went wrong. Please email Sureshguragain10@gmail.com directly.');
+      alert('Sorry, something went wrong. Please email sureshguragain10@gmail.com directly.');
     }
   });
 }
@@ -2428,13 +2440,30 @@ function calcTax() {
   }
 
   // render
+  // Female rebate: 10% of computed tax for resident women, employment income only,
+  // filing individually (not available with married-couple joint filing).
+  const gender = (document.querySelector('#calcGender button.on') || {}).dataset
+    ? document.querySelector('#calcGender button.on').dataset.gender : 'other';
+  const rebateEligible = gender === 'female' && status === 'single';
+  const rebate = rebateEligible ? totalTax * 0.10 : 0;
+  const finalTax = totalTax - rebate;
+
   $('#calcGross').textContent = npr(gross);
   $('#calcDeduct').textContent = npr(deductions);
   $('#calcTaxable').textContent = npr(taxable);
-  $('#calcTaxYear').textContent = npr(totalTax);
-  $('#calcTaxMonth').textContent = npr(totalTax / 12) + ' / month';
-  $('#calcNet').textContent = npr(gross - totalTax);
-  $('#calcEffective').textContent = (gross > 0 ? (totalTax / gross * 100).toFixed(1) : '0') + '%';
+  const rebateRow = $('#calcRebateRow');
+  if (rebateRow) {
+    if (rebateEligible && rebate > 0) {
+      rebateRow.style.display = '';
+      $('#calcRebate').textContent = '− ' + npr(rebate);
+    } else {
+      rebateRow.style.display = 'none';
+    }
+  }
+  $('#calcTaxYear').textContent = npr(finalTax);
+  $('#calcTaxMonth').textContent = npr(finalTax / 12) + ' / month';
+  $('#calcNet').textContent = npr(gross - finalTax);
+  $('#calcEffective').textContent = (gross > 0 ? (finalTax / gross * 100).toFixed(1) : '0') + '%';
 
   const body = $('#calcSlabBody');
   body.innerHTML = rows.length
@@ -2462,6 +2491,30 @@ function applyYearUI() {
       ? 'Estimate only, based on FY 2083/84 unified slabs (Budget 2083/84, pending final Finance Act). Verify against the IRD circular for filing. For accurate filing, get in touch.'
       : 'Estimate only, based on FY 2082/83 resident salary slabs (Finance Act 2082). Actual liability depends on your full circumstances. For accurate filing, get in touch.';
   }
+  applyRebateUI();
+}
+
+// Show the female-rebate toggle only when filing individually (rebate can't
+// combine with married-couple joint filing). When couple is active, force the
+// gender selection back to "other" so no stale rebate is applied.
+function applyRebateUI() {
+  const statusBtn = document.querySelector('#calcStatus button.on');
+  const status = statusBtn ? statusBtn.dataset.status : 'single';
+  const fy = TAX_YEARS[CURRENT_YEAR];
+  const isCouple = fy.splitStatus && status === 'couple';
+  const genderSeg = $('#calcGender');
+  const note = $('#calcRebateNote');
+  if (genderSeg) {
+    if (isCouple) {
+      genderSeg.querySelectorAll('button').forEach(b =>
+        b.classList.toggle('on', b.dataset.gender === 'other'));
+      genderSeg.style.display = 'none';
+      if (note) note.style.display = 'none';
+    } else {
+      genderSeg.style.display = '';
+      if (note) note.style.display = '';
+    }
+  }
 }
 
 function initCalc() {
@@ -2484,8 +2537,19 @@ function initCalc() {
     const btn = e.target.closest('button'); if (!btn) return;
     $('#calcStatus').querySelectorAll('button').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
+    applyRebateUI();
     calcTax();
   });
+  // gender toggle (female rebate)
+  const genderSeg = $('#calcGender');
+  if (genderSeg) {
+    genderSeg.addEventListener('click', e => {
+      const btn = e.target.closest('button'); if (!btn) return;
+      genderSeg.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      calcTax();
+    });
+  }
   // live recalc on any input
   ['#calcMonthly','#calcMonths','#calcBonus','#calcRetire','#calcLife','#calcHealth','#calcSSF']
     .forEach(sel => { const el = $(sel); if (el) el.addEventListener('input', calcTax); });

@@ -41,64 +41,19 @@
     ]
   },
   "trust": [
-    {
-      "text": "ICAI — CPT & IPCC Groups I & II Passed"
-    },
-    {
-      "text": "CA Final Group I Passed · Jan 2026"
-    },
-    {
-      "text": "Statutory & Internal Audit Experience"
-    },
-    {
-      "text": "VAT · TDS · Financial Reconciliation"
-    },
-    {
-      "text": "Nepal & India Practice Background"
-    }
+    "",
+    "",
+    "",
+    "",
+    ""
   ],
   "about": {
-    "photo": "",
     "heading": "A finance professional who gets the details right",
     "paragraphs": [
-      {
-        "text": "I am <strong>Sures Guragai</strong>, a finance and audit professional based in Kathmandu. My CA journey began in 2016 as an Articled Audit Assistant in India, and over the past seven years I have built hands-on experience across statutory audit, internal audit, bookkeeping, VAT & TDS compliance, and financial reconciliation."
-      },
-      {
-        "text": "I currently serve as <strong>Finance Solutions Officer at Nepal Works</strong>, where I manage commission calculations, ledger monitoring, data accuracy controls, and day-to-day reconciliation workflows. Prior to this I spent over two years at Trust Haven Professional in Kathmandu performing statutory audits for clients across engineering, nonprofit, restaurant, securities, and service sectors."
-      },
-      {
-        "text": "My early training across firms in New Delhi and Noida gave me strong foundations in bank audits, NPA review, income tax compliance, and company incorporation matters. Alongside professional work I am concurrently pursuing an MBS and LLB to deepen my understanding of business and legal frameworks."
-      },
-      {
-        "text": "I bring a disciplined, detail-oriented approach to every engagement — whether ensuring a ledger reconciles to the last rupee or structuring clean financial records for an audit."
-      }
-    ],
-    "strengths": [
-      {
-        "text": "Audit & Compliance"
-      },
-      {
-        "text": "Financial Reconciliation"
-      },
-      {
-        "text": "VAT & TDS Returns"
-      },
-      {
-        "text": "Bookkeeping"
-      },
-      {
-        "text": "Internal Controls"
-      },
-      {
-        "text": "Commission Validation"
-      },
-      {
-        "text": "Reporting Support"
-      },
-      {
-        "text": "Analytical Thinking"
-      }
+      "I am Sures Guragai, a Kathmandu-based finance and audit professional with over seven years of hands-on experience in auditing, accounting, compliance, financial reconciliation, and finance operations.",
+      "",
+      "",
+      ""
     ],
     "facts": [
       {
@@ -129,7 +84,34 @@
         "key": "Contact",
         "val": "+977 9848273802<br>Sureshguragain10@gmail.com"
       }
-    ]
+    ],
+    "strengths": [
+      {
+        "text": "Audit & Compliance"
+      },
+      {
+        "text": "Financial Reconciliation"
+      },
+      {
+        "text": "VAT & TDS Returns"
+      },
+      {
+        "text": "Bookkeeping"
+      },
+      {
+        "text": "Internal Controls"
+      },
+      {
+        "text": "Commission Validation"
+      },
+      {
+        "text": "Reporting Support"
+      },
+      {
+        "text": "Analytical Thinking"
+      }
+    ],
+    "photo": ""
   },
   "services": [
     {

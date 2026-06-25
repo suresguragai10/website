@@ -2232,7 +2232,7 @@ const create = (tag, cls, html) => {
 };
 /* unwrap CMS list items: [{text:"a"}] -> ["a"]; plain strings pass through */
 const txt = v => (v && typeof v === 'object' && 'text' in v) ? v.text : v;
-const list = a => Array.isArray(a) ? a.map(txt) : [];
+const list = a => Array.isArray(a) ? a.map(txt).filter(v => String(v == null ? '' : v).trim()) : [];
 
 let DATA = window.__SEED__; // fallback if fetch fails
 
